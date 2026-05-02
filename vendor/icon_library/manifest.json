@@ -1,0 +1,68 @@
+{
+  "Custom/Sunburst": {
+    "file": "Custom/Sunburst.png",
+    "category": "Custom",
+    "subcategory": "",
+    "name": "Sunburst"
+  },
+  "Textures/Hardcoded/GoldenStudsShelfButtonTexture.png": {
+    "file": "Textures/Hardcoded/GoldenStudsShelfButtonTexture.png",
+    "category": "Textures",
+    "subcategory": "Hardcoded",
+    "name": "GoldenStudsShelfButtonTexture"
+  },
+  "Textures/Hardcoded/GreenButtonPlasmaStuds.png": {
+    "file": "Textures/Hardcoded/GreenButtonPlasmaStuds.png",
+    "category": "Textures",
+    "subcategory": "Hardcoded",
+    "name": "GreenButtonPlasmaStuds"
+  },
+  "Textures/Hardcoded/GreenStudShelfButtonTexture.png": {
+    "file": "Textures/Hardcoded/GreenStudShelfButtonTexture.png",
+    "category": "Textures",
+    "subcategory": "Hardcoded",
+    "name": "GreenStudShelfButtonTexture"
+  },
+  "Textures/NoisyPlane": {
+    "file": "Textures/NoisyPlane.png",
+    "category": "Textures",
+    "subcategory": "",
+    "name": "NoisyPlane"
+  },
+  "Textures/ShinyGlossy": {
+    "file": "Textures/ShinyGlossy.png",
+    "category": "Textures",
+    "subcategory": "",
+    "name": "ShinyGlossy"
+  },
+  "Textures/ShinyGlossy_Flip": {
+    "file": "Textures/ShinyGlossy_Flip.png",
+    "category": "Textures",
+    "subcategory": "",
+    "name": "ShinyGlossy_Flip"
+  },
+  "Textures/Studs/StudSingleWhiteBackground": {
+    "file": "Textures/Studs/StudSingleWhiteBackground.png",
+    "category": "Textures",
+    "subcategory": "Studs",
+    "name": "StudSingleWhiteBackground"
+  },
+  "Textures/Studs/StudsInletTexture": {
+    "file": "Textures/Studs/StudsInletTexture.png",
+    "category": "Textures",
+    "subcategory": "Studs",
+    "name": "StudsInletTexture"
+  },
+  "Textures/Studs/StudsTexture": {
+    "file": "Textures/Studs/StudsTexture.png",
+    "category": "Textures",
+    "subcategory": "Studs",
+    "name": "StudsTexture"
+  },
+  "Textures/StudsStyleButtonGlint": {
+    "file": "Textures/StudsStyleButtonGlint.png",
+    "category": "Textures",
+    "subcategory": "",
+    "name": "StudsStyleButtonGlint"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "src": "/health",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/render",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/preview.png",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/font-health",
+      "dest": "api/index.py"
+    }
+  ]
+}

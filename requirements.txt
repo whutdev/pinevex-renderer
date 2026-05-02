@@ -1,0 +1,6 @@
+fastapi>=0.115.0
+json-repair==0.*
+uvicorn[standard]>=0.34.0
+Pillow>=11.0.0
+skia-python>=87.0
+requests>=2.32.0
