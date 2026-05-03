@@ -59,5 +59,5 @@ Open http://localhost:5173.
 - Idle, drag-over, parsing, normalizing, fetching, rendering, done, error.
 - Status pill in the top bar reflects the current stage.
 - Tabs: Preview, Normalized JSON, Luau, Log.
-- Examples: RobuxShop, SLS Lobby, Upgrade, Simple. Selecting one renders it
-  immediately.
+- Examples: RobuxShop, SLS Lobby, Upgrade, HUD Test, Simple. Selecting one
+  renders it immediately.

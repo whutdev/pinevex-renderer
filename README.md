@@ -20,6 +20,12 @@ Rendered by Pinevex Renderer
 
 ![Pinevex Renderer rendering a Roblox-style upgrade UI](docs/assets/upgrade-transparent-render.png)
 
+Rendered by Pinevex Renderer
+
+![Pinevex Renderer rendering a Roblox-style HUD test UI](docs/assets/hudtest-transparent-render.png)
+
+Rendered by Pinevex Renderer
+
 _yes, pinevex renderer can render THIS! ( and almost anything! )_
 
 </div>

@@ -26,6 +26,14 @@ export const EXAMPLES: ExampleSpec[] = [
     viewport: [1920, 1080],
   },
   {
+    id: "hudtest",
+    label: "HUD Test",
+    description: "In-game HUD with navigation text and bottom roll controls.",
+    jsonPath: "examples/hudtest.json",
+    thumbnailPath: "renders/hudtest.png",
+    viewport: [1920, 1080],
+  },
+  {
     id: "simple",
     label: "Simple",
     description: "Two-element minimal example from the README.",
