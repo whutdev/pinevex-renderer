@@ -37,6 +37,7 @@ _RENDERABLE_CLASSES = {
 
 class RenderableMatch(NamedTuple):
     node: dict[str, Any]
+    visibility_root: dict[str, Any]
     screen_gui_disabled: bool
 
 
@@ -57,7 +58,7 @@ def _find_renderable(
             if not children:
                 continue
             if len(children) == 1:
-                return RenderableMatch(children[0], gui_disabled)
+                return RenderableMatch(children[0], children[0], gui_disabled)
             return RenderableMatch(
                 {
                     "className": "Frame",
@@ -71,28 +72,40 @@ def _find_renderable(
                     },
                     "children": children,
                 },
+                node,
                 gui_disabled,
             )
         if cls in _RENDERABLE_CLASSES:
-            return RenderableMatch(node, screen_gui_disabled)
+            return RenderableMatch(node, node, screen_gui_disabled)
         found = _find_renderable(node.get("children", []), screen_gui_disabled)
         if found:
             return found
     return None
 
 
-def _has_effectively_visible_node(
+def _has_effectively_visible_renderable(
     node: dict[str, Any],
     inherited_visible: bool = True,
 ) -> bool:
-    visible = inherited_visible and node.get("visible") is not False
-    if visible:
-        return True
+    cls = node.get("className", "")
+    props = node.get("properties") or {}
+    visible = inherited_visible
+
+    if cls in _SCREEN_GUI_CLASSES:
+        visible = visible and not _prop_is_false(props.get("Enabled"))
+    elif cls in _RENDERABLE_CLASSES:
+        visible = visible and not _prop_is_false(props.get("Visible"))
+        if visible:
+            return True
+
+    if not visible:
+        return False
+
     children = node.get("children", [])
     if not isinstance(children, list):
         return False
     return any(
-        _has_effectively_visible_node(child, visible)
+        _has_effectively_visible_renderable(child, visible)
         for child in children
         if isinstance(child, dict)
     )
@@ -134,7 +147,7 @@ async def parse_rbxm(file: UploadFile = File(...)):
         warnings.append(
             "Heads up: this ScreenGui is disabled, so the render may be blank until Enabled=true."
         )
-    if not _has_effectively_visible_node(obj):
+    elif not _has_effectively_visible_renderable(renderable.visibility_root):
         warnings.append(
             "Heads up: all renderable GUI objects in this RBXM have Visible=false, so the render may be blank."
         )
