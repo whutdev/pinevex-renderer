@@ -767,8 +767,11 @@ kbd {
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+}
+.surface--empty,
+.surface--error {
   padding: 24px;
-  overflow: auto;
 }
 .surface--checker {
   background-color: #fdfdfd;
@@ -780,13 +783,114 @@ kbd {
   background-size: 16px 16px;
   background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
 }
-.surface__img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+
+/* Zoomable preview */
+
+.zoom {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.zoom__stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.zoom__stage:active {
+  cursor: grabbing;
+}
+.zoom__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.zoom__content img {
+  display: block;
+  max-width: none;
+  max-height: none;
+  user-select: none;
+  -webkit-user-drag: none;
   image-rendering: -webkit-optimize-contrast;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.04);
   border-radius: 2px;
+  pointer-events: none;
+}
+
+.zoom__controls {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-2);
+}
+.zoom__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: transparent;
+  color: var(--text-2);
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+.zoom__btn:hover {
+  background: var(--panel-2);
+  color: var(--text);
+}
+.zoom__btn--text {
+  width: auto;
+  padding: 0 8px;
+  font-size: 11.5px;
+  font-weight: 500;
+}
+.zoom__readout {
+  min-width: 46px;
+  height: 22px;
+  padding: 0 6px;
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.zoom__readout:hover {
+  background: var(--panel-2);
+}
+.zoom__sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  margin: 0 4px;
+}
+.zoom__natural {
+  padding: 0 8px 0 4px;
+  color: var(--text-3);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
 }
 
 .surface__overlay {

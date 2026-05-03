@@ -3,6 +3,7 @@ import type { LogEntry, ProcessingStage, RenderResult } from "../types";
 import { prettyJson } from "../api";
 import StatusLog from "./StatusLog";
 import Tabs from "./Tabs";
+import ZoomableImage from "./ZoomableImage";
 
 interface PreviewPaneProps {
   stage: ProcessingStage;
@@ -172,8 +173,7 @@ function PreviewSurface({
       data-source={sourceName}
     >
       {result?.preview ? (
-        <img
-          className="surface__img"
+        <ZoomableImage
           src={result.preview}
           alt={`${sourceName} render`}
         />

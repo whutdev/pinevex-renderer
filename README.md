@@ -6,6 +6,9 @@
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Web Demo](https://img.shields.io/badge/Web%20Demo-Live-brightgreen.svg)](https://pinevex-renderer-demo.vercel.app)
+
+**[Open the live web demo](https://pinevex-renderer-demo.vercel.app)**
 
 ![Pinevex Renderer rendering a Roblox-style RobuxShop UI](docs/assets/robuxshop-transparent-render.png)
 
@@ -22,6 +25,8 @@ _yes, pinevex renderer can render THIS! ( and almost anything! )_
 </div>
 
 Pinevex Renderer is a CPU-only renderer that achieves near-parity with Roblox's internal UI engine for structured Roblox-style UI JSON.
+
+Try it in the live web demo: [pinevex-renderer-demo.vercel.app](https://pinevex-renderer-demo.vercel.app).
 
 The project originally existed to generate AI synthetic training data: structured Roblox-style UI trees could be rendered into reference images for model training, reconstruction, and validation loops.
 
@@ -118,6 +123,8 @@ Supported `ScrollingFrame` behavior:
 - normalized preview-time `canvasPosition` for rendering scrolled content
 
 ## Quick start
+
+Use the hosted demo here: [https://pinevex-renderer-demo.vercel.app](https://pinevex-renderer-demo.vercel.app).
 
 Create a Python environment and install dependencies:
 
