@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import type { ExampleSpec, ProcessingStage } from "../types";
-import { parseRbxmFile, prettyJson } from "../api";
+import { parseRbxmFile } from "../api";
 import ExampleChips from "./ExampleChips";
 import DropZone from "./DropZone";
 import JsonEditor from "./JsonEditor";
@@ -21,6 +21,7 @@ interface InputPaneProps {
   stage: ProcessingStage;
   sourceName: string;
   onSourceNameChange: (v: string) => void;
+  onParsedRbxm: (value: string, sourceName: string, nodeCount?: number) => void;
 }
 
 export default function InputPane(props: InputPaneProps) {
@@ -55,12 +56,16 @@ export default function InputPane(props: InputPaneProps) {
         setNotice({ kind: "ok", text: `Parsing ${file.name}...` });
         try {
           const parsed = await parseRbxmFile(file);
-          props.onChange(prettyJson(parsed.pinevex_object));
           props.onSourceNameChange(parsed.source_name || file.name);
           setNotice({
             kind: "ok",
-            text: `Parsed ${file.name}${parsed.node_count ? ` into ${parsed.node_count} UI nodes` : ""}. Ready to render.`,
+            text: `Parsed ${file.name}${parsed.node_count ? ` into ${parsed.node_count} UI nodes` : ""}. Rendering automatically.`,
           });
+          props.onParsedRbxm(
+            parsed.pinevex_object,
+            parsed.source_name || file.name,
+            parsed.node_count,
+          );
         } catch (err) {
           setNotice({
             kind: "warn",

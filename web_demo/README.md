@@ -17,7 +17,7 @@ behavior contract in [`REFERENCE_CONTRACT.md`](REFERENCE_CONTRACT.md).
 - Example fixtures and reference renders live in `public/examples/` and
   `public/renders/` so the example chips can lazy-fetch them.
 - `.rbxm` upload parses a ScreenGui or renderable GuiObject into Pinevex JSON,
-  then populates the editor for rendering.
+  then renders automatically.
 
 ## Run locally
 
@@ -59,4 +59,5 @@ Open http://localhost:5173.
 - Idle, drag-over, parsing, normalizing, fetching, rendering, done, error.
 - Status pill in the top bar reflects the current stage.
 - Tabs: Preview, Normalized JSON, Luau, Log.
-- Examples: RobuxShop, SLS Lobby, Upgrade, Simple.
+- Examples: RobuxShop, SLS Lobby, Upgrade, Simple. Selecting one renders it
+  immediately.

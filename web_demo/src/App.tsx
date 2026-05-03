@@ -44,14 +44,6 @@ export default function App() {
   const [healthOk, setHealthOk] = useState<boolean | null>(null);
   const requestRef = useRef<AbortController | null>(null);
 
-  const appendLog = useCallback((stage: ProcessingStage, message: string) => {
-    setRenderState((prev) => ({
-      ...prev,
-      stage,
-      log: [...prev.log, { ts: Date.now(), stage, message }],
-    }));
-  }, []);
-
   useEffect(() => {
     const ac = new AbortController();
     checkHealth(ac.signal).then(setHealthOk);
@@ -64,13 +56,116 @@ export default function App() {
     };
   }, []);
 
+  const renderSource = useCallback(
+    async (
+      sourceText: string,
+      nextSourceName: string,
+      nextViewport: [number, number],
+      initialLog: LogEntry[] = [],
+    ) => {
+      requestRef.current?.abort();
+      const controller = new AbortController();
+      requestRef.current = controller;
+
+      setRenderState({
+        stage: "parsing",
+        log: [
+          ...initialLog,
+          {
+            ts: Date.now(),
+            stage: "parsing",
+            message: "Parsing Pinevex JSON",
+          },
+        ],
+        result: null,
+        errorMessage: null,
+        sourceName: nextSourceName,
+      });
+
+      let trimmed: string;
+      try {
+        trimmed = sourceText.trim();
+        if (!trimmed) throw new Error("Source JSON is empty");
+        JSON.parse(trimmed);
+      } catch (err) {
+        setRenderState({
+          stage: "error",
+          log: [
+            ...initialLog,
+            {
+              ts: Date.now(),
+              stage: "error",
+              message: `Invalid JSON: ${err instanceof Error ? err.message : String(err)}`,
+            },
+          ],
+          result: null,
+          errorMessage: err instanceof Error ? err.message : String(err),
+          sourceName: nextSourceName,
+        });
+        return;
+      }
+
+      setRenderState((prev) => ({
+        ...prev,
+        stage: "rendering",
+        log: [
+          ...prev.log,
+          { ts: Date.now(), stage: "normalizing", message: "Normalizing UI tree" },
+          { ts: Date.now(), stage: "fetching", message: "Fetching asset thumbnails" },
+          { ts: Date.now(), stage: "rendering", message: "Rendering PNG preview" },
+        ],
+      }));
+
+      try {
+        const result = await callRender({
+          pinevexObject: trimmed,
+          viewportSize: nextViewport,
+          transparentBackground: transparent,
+          includeLuau: includeLuau,
+          signal: controller.signal,
+        });
+        setRenderState((prev) => ({
+          ...prev,
+          stage: "done",
+          result,
+          errorMessage: null,
+          log: [
+            ...prev.log,
+            {
+              ts: Date.now(),
+              stage: "done",
+              message: result.repaired
+                ? "Rendered with partial-JSON repair"
+                : "Render complete",
+            },
+          ],
+        }));
+      } catch (err) {
+        if (controller.signal.aborted) return;
+        const message = err instanceof Error ? err.message : String(err);
+        setRenderState((prev) => ({
+          ...prev,
+          stage: "error",
+          errorMessage: message,
+          log: [
+            ...prev.log,
+            { ts: Date.now(), stage: "error", message: `Render failed: ${message}` },
+          ],
+        }));
+      }
+    },
+    [transparent, includeLuau],
+  );
+
   const onLoadExample = useCallback(async (example: ExampleSpec) => {
     requestRef.current?.abort();
+    const nextSourceName = `${example.id}.json`;
+    const startedAt = Date.now();
     setRenderState({
       stage: "parsing",
       log: [
         {
-          ts: Date.now(),
+          ts: startedAt,
           stage: "parsing",
           message: `Loading example: ${example.label}`,
         },
@@ -79,26 +174,27 @@ export default function App() {
       errorMessage: null,
       sourceName: example.label,
     });
-    setSourceName(`${example.id}.json`);
+    setSourceName(nextSourceName);
     setViewport(example.viewport);
 
     try {
       const res = await fetch(example.jsonPath);
       if (!res.ok) throw new Error(`Failed to load fixture (${res.status})`);
       const text = await res.text();
-      setSource(prettyJson(text));
-      setRenderState((prev) => ({
-        ...prev,
-        stage: "idle",
-        log: [
-          ...prev.log,
-          {
-            ts: Date.now(),
-            stage: "idle",
-            message: `Loaded ${example.label}. Ready to render.`,
-          },
-        ],
-      }));
+      const formatted = prettyJson(text);
+      setSource(formatted);
+      await renderSource(formatted, nextSourceName, example.viewport, [
+        {
+          ts: startedAt,
+          stage: "parsing",
+          message: `Loading example: ${example.label}`,
+        },
+        {
+          ts: Date.now(),
+          stage: "parsing",
+          message: `Loaded ${example.label}; rendering automatically`,
+        },
+      ]);
     } catch (err) {
       setRenderState((prev) => ({
         ...prev,
@@ -114,91 +210,11 @@ export default function App() {
         ],
       }));
     }
-  }, []);
+  }, [renderSource]);
 
   const onRender = useCallback(async () => {
-    requestRef.current?.abort();
-    const controller = new AbortController();
-    requestRef.current = controller;
-
-    setRenderState({
-      stage: "parsing",
-      log: [
-        {
-          ts: Date.now(),
-          stage: "parsing",
-          message: "Parsing Pinevex JSON",
-        },
-      ],
-      result: null,
-      errorMessage: null,
-      sourceName: sourceName,
-    });
-
-    let trimmed: string;
-    try {
-      trimmed = source.trim();
-      if (!trimmed) throw new Error("Source JSON is empty");
-      JSON.parse(trimmed);
-    } catch (err) {
-      setRenderState({
-        stage: "error",
-        log: [
-          {
-            ts: Date.now(),
-            stage: "error",
-            message: `Invalid JSON: ${err instanceof Error ? err.message : String(err)}`,
-          },
-        ],
-        result: null,
-        errorMessage: err instanceof Error ? err.message : String(err),
-        sourceName: sourceName,
-      });
-      return;
-    }
-
-    appendLog("normalizing", "Normalizing UI tree");
-    appendLog("fetching", "Fetching asset thumbnails");
-    appendLog("rendering", "Rendering PNG preview");
-
-    try {
-      const result = await callRender({
-        pinevexObject: trimmed,
-        viewportSize: viewport,
-        transparentBackground: transparent,
-        includeLuau: includeLuau,
-        signal: controller.signal,
-      });
-      setRenderState((prev) => ({
-        ...prev,
-        stage: "done",
-        result,
-        errorMessage: null,
-        log: [
-          ...prev.log,
-          {
-            ts: Date.now(),
-            stage: "done",
-            message: result.repaired
-              ? "Rendered with partial-JSON repair"
-              : "Render complete",
-          },
-        ],
-      }));
-    } catch (err) {
-      if (controller.signal.aborted) return;
-      const message = err instanceof Error ? err.message : String(err);
-      setRenderState((prev) => ({
-        ...prev,
-        stage: "error",
-        errorMessage: message,
-        log: [
-          ...prev.log,
-          { ts: Date.now(), stage: "error", message: `Render failed: ${message}` },
-        ],
-      }));
-    }
-  }, [source, sourceName, viewport, transparent, includeLuau, appendLog]);
+    await renderSource(source, sourceName, viewport);
+  }, [source, sourceName, viewport, renderSource]);
 
   const onClear = useCallback(() => {
     requestRef.current?.abort();
@@ -213,6 +229,22 @@ export default function App() {
       setRenderState((prev) => ({ ...prev, stage: "idle" }));
     }
   }, [renderState.stage]);
+
+  const onParsedRbxm = useCallback(
+    async (value: string, nextSourceName: string, nodeCount?: number) => {
+      const formatted = prettyJson(value);
+      setSource(formatted);
+      setSourceName(nextSourceName);
+      await renderSource(formatted, nextSourceName, viewport, [
+        {
+          ts: Date.now(),
+          stage: "parsing",
+          message: `Parsed ${nextSourceName}${nodeCount ? ` into ${nodeCount} UI nodes` : ""}; rendering automatically`,
+        },
+      ]);
+    },
+    [renderSource, viewport],
+  );
 
   const exampleByName = useMemo(
     () => EXAMPLES.find((e) => `${e.id}.json` === sourceName) ?? null,
@@ -245,6 +277,7 @@ export default function App() {
           stage={renderState.stage}
           onSourceNameChange={setSourceName}
           sourceName={sourceName}
+          onParsedRbxm={onParsedRbxm}
         />
         <PreviewPane
           stage={renderState.stage}
