@@ -23,6 +23,8 @@ _yes, pinevex renderer can render THIS! ( and almost anything! )_
 
 Pinevex Renderer is a CPU-only renderer that achieves near-parity with Roblox's internal UI engine for structured Roblox-style UI JSON.
 
+The project originally existed to generate AI synthetic training data: structured Roblox-style UI trees could be rendered into reference images for model training, reconstruction, and validation loops.
+
 It takes a nested UI tree and produces PNG previews that are close enough to be useful for reconstruction, validation, and export workflows. The renderer handles scale/offset layout, nested hierarchy, text fitting, strokes, gradients, rounded corners, tiled textures, icon references, and optional Luau generation.
 
 This repository is intentionally scoped to the renderer layer.
