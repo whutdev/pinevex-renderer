@@ -1,0 +1,59 @@
+{
+  "type": "Frame",
+  "name": "ExampleRoot",
+  "size": [1, 0, 1, 0],
+  "position": [0.5, 0, 0.5, 0],
+  "anchor": [0.5, 0.5],
+  "bg": [24, 28, 36],
+  "children": [
+    {
+      "type": "TextLabel",
+      "name": "Title",
+      "size": [0.82, 0, 0.3, 0],
+      "position": [0.5, 0, 0.28, 0],
+      "anchor": [0.5, 0.5],
+      "bgTransparency": 1,
+      "text": "Renderer Preview",
+      "textColor": [255, 255, 255],
+      "textSize": 34,
+      "textScaled": true,
+      "textWrapped": true,
+      "font": "Montserrat",
+      "fontWeight": "Heavy",
+      "strokes": [
+        {
+          "thickness": 2,
+          "color": [0, 0, 0],
+          "transparency": 0.35
+        }
+      ]
+    },
+    {
+      "type": "TextButton",
+      "name": "PrimaryButton",
+      "size": [0.58, 0, 0.28, 0],
+      "position": [0.5, 0, 0.68, 0],
+      "anchor": [0.5, 0.5],
+      "bg": [64, 179, 108],
+      "corner": 0.12,
+      "text": "Open",
+      "textColor": [255, 255, 255],
+      "textSize": 24,
+      "textScaled": true,
+      "font": "Montserrat",
+      "fontWeight": "Bold",
+      "gradient": {
+        "rotation": 90,
+        "colors": [[0, "#54e184"], [1, "#208a54"]],
+        "transparency": [[0, 0], [1, 0]]
+      },
+      "strokes": [
+        {
+          "thickness": 3,
+          "color": [17, 84, 48],
+          "applyMode": "Border"
+        }
+      ]
+    }
+  ]
+}

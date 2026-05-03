@@ -1,0 +1,3020 @@
+{
+  "type": "Frame",
+  "name": "Upgrade",
+  "size": [
+    0.51,
+    0.0,
+    0.296,
+    0.0
+  ],
+  "position": [
+    0.5,
+    0.0,
+    0.5,
+    0.0
+  ],
+  "anchor": [
+    0.5,
+    0.5
+  ],
+  "bg": [
+    255,
+    255,
+    255
+  ],
+  "bgTransparency": 1.0,
+  "borderSize": 0.0,
+  "zIndex": 1,
+  "layoutOrder": 0,
+  "children": [
+    {
+      "type": "Frame",
+      "name": "Background",
+      "size": [
+        1.0,
+        0.0,
+        1.213013,
+        0.0
+      ],
+      "position": [
+        0.5,
+        0.0,
+        0.6065062,
+        0.0
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "bg": [
+        58,
+        58,
+        58
+      ],
+      "bgTransparency": 0.35,
+      "borderSize": 0.0,
+      "zIndex": 1,
+      "layoutOrder": 0,
+      "corner": {
+        "scale": 0.019,
+        "offset": 0.0
+      },
+      "strokes": [
+        {
+          "color": [
+            45,
+            45,
+            45
+          ],
+          "transparency": 0.0,
+          "thickness": 0.015,
+          "applyMode": "Border",
+          "borderPosition": "Outer",
+          "lineJoin": "Round",
+          "thicknessScale": true,
+          "borderOffset": {
+            "scale": 0.0,
+            "offset": 0.0
+          }
+        }
+      ],
+      "children": [
+        {
+          "type": "ImageLabel",
+          "name": "Studs",
+          "size": [
+            1.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "position": [
+            0.5,
+            0.0,
+            0.5,
+            0.0
+          ],
+          "anchor": [
+            0.5,
+            0.5
+          ],
+          "bg": [
+            255,
+            255,
+            255
+          ],
+          "bgTransparency": 1.0,
+          "borderSize": 0.0,
+          "zIndex": 1,
+          "layoutOrder": 0,
+          "icon": "rbxassetid://131959055895305",
+          "imageColor": [
+            255,
+            255,
+            255
+          ],
+          "imageTransparency": 0.71,
+          "scaleType": "Tile",
+          "tileSize": [
+            0.12,
+            0.0,
+            0.25,
+            0.0
+          ],
+          "sliceCenter": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sliceScale": 1.0,
+          "imageRectSize": [
+            0.0,
+            0.0
+          ],
+          "imageRectOffset": [
+            0.0,
+            0.0
+          ],
+          "sizeRef": "parent"
+        },
+        {
+          "type": "Frame",
+          "name": "Background",
+          "size": [
+            0.963587,
+            0.0,
+            0.8995178,
+            0.0
+          ],
+          "position": [
+            0.5028279,
+            0.0,
+            0.5081571,
+            0.0
+          ],
+          "anchor": [
+            0.5,
+            0.5
+          ],
+          "bg": [
+            255,
+            255,
+            255
+          ],
+          "bgTransparency": 0.25,
+          "borderSize": 0.0,
+          "zIndex": 1,
+          "layoutOrder": 0,
+          "corner": {
+            "scale": 0.019,
+            "offset": 0.0
+          },
+          "strokes": [
+            {
+              "color": [
+                45,
+                45,
+                45
+              ],
+              "transparency": 0.0,
+              "thickness": 0.015,
+              "applyMode": "Border",
+              "borderPosition": "Outer",
+              "lineJoin": "Round",
+              "thicknessScale": true,
+              "borderOffset": {
+                "scale": 0.0,
+                "offset": 0.0
+              }
+            }
+          ],
+          "gradient": {
+            "colors": [
+              [
+                0,
+                "#D77BFF"
+              ],
+              [
+                1,
+                "#85FFFF"
+              ]
+            ],
+            "transparency": [
+              [
+                0,
+                0.0
+              ],
+              [
+                1,
+                0.0
+              ]
+            ],
+            "rotation": 151.0,
+            "offset": [
+              0.0,
+              0.0
+            ]
+          },
+          "children": [
+            {
+              "type": "ImageLabel",
+              "name": "Studs",
+              "size": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "position": [
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "icon": "rbxassetid://131959055895305",
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.71,
+              "scaleType": "Tile",
+              "tileSize": [
+                0.12,
+                0.0,
+                0.4,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "sizeRef": "parent"
+            }
+          ],
+          "sizeRef": "parent"
+        }
+      ],
+      "sizeRef": "parent"
+    },
+    {
+      "type": "Frame",
+      "name": "Topbar",
+      "size": [
+        1.060538,
+        0.0,
+        0.3042636,
+        0.0
+      ],
+      "position": [
+        -0.02497111,
+        0.0,
+        -0.297182,
+        0.0
+      ],
+      "anchor": [
+        0.0,
+        0.0
+      ],
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "bgTransparency": 0.0,
+      "borderSize": 0.0,
+      "zIndex": 10,
+      "layoutOrder": 0,
+      "corner": {
+        "scale": 0.1,
+        "offset": 0.0
+      },
+      "strokes": [
+        {
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "transparency": 0.0,
+          "thickness": 0.05,
+          "applyMode": "Contextual",
+          "borderPosition": "Outer",
+          "lineJoin": "Round",
+          "thicknessScale": true,
+          "borderOffset": {
+            "scale": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "color": [
+            255,
+            255,
+            255
+          ],
+          "transparency": 0.5,
+          "thickness": 0.044,
+          "applyMode": "Contextual",
+          "borderPosition": "Inner",
+          "lineJoin": "Round",
+          "thicknessScale": true,
+          "borderOffset": {
+            "scale": 0.0,
+            "offset": 0.0
+          }
+        }
+      ],
+      "gradient": {
+        "colors": [
+          [
+            0,
+            "#00BC55"
+          ],
+          [
+            1,
+            "#00F671"
+          ]
+        ],
+        "transparency": [
+          [
+            0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ],
+        "rotation": 90.0,
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "children": [
+        {
+          "type": "ImageButton",
+          "name": "Exit",
+          "size": [
+            0.109675,
+            0.0,
+            0.7613974,
+            0.0
+          ],
+          "position": [
+            0.9581553,
+            0.0,
+            0.2973593,
+            0.0
+          ],
+          "anchor": [
+            0.75,
+            0.25
+          ],
+          "bg": [
+            255,
+            255,
+            255
+          ],
+          "bgTransparency": 0.0,
+          "borderSize": 0.0,
+          "zIndex": 3,
+          "layoutOrder": 0,
+          "text": "",
+          "textColor": [
+            0,
+            0,
+            0
+          ],
+          "textSize": 14.0,
+          "textTransparency": 0.0,
+          "textXAlignment": "Center",
+          "textYAlignment": "Center",
+          "lineHeight": 1.0,
+          "font": "GothamSSm",
+          "fontWeight": "Regular",
+          "corner": {
+            "scale": 0.05,
+            "offset": 0.0
+          },
+          "strokes": [
+            {
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "transparency": 0.5,
+              "thickness": 0.04,
+              "applyMode": "Border",
+              "borderPosition": "Inner",
+              "lineJoin": "Round",
+              "thicknessScale": true,
+              "borderOffset": {
+                "scale": 0.0,
+                "offset": 0.0
+              }
+            },
+            {
+              "color": [
+                0,
+                0,
+                0
+              ],
+              "transparency": 0.0,
+              "thickness": 0.04,
+              "applyMode": "Border",
+              "borderPosition": "Outer",
+              "lineJoin": "Round",
+              "thicknessScale": true,
+              "borderOffset": {
+                "scale": 0.0,
+                "offset": 0.0
+              }
+            }
+          ],
+          "gradient": {
+            "colors": [
+              [
+                0,
+                "#D50000"
+              ],
+              [
+                1,
+                "#F95858"
+              ]
+            ],
+            "transparency": [
+              [
+                0,
+                0.0
+              ],
+              [
+                1,
+                0.0
+              ]
+            ],
+            "rotation": -90.0,
+            "offset": [
+              0.0,
+              0.0
+            ]
+          },
+          "aspectRatio": 1.0,
+          "children": [
+            {
+              "type": "ImageLabel",
+              "name": "Studs",
+              "size": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "position": [
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "icon": "rbxassetid://131959055895305",
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.5,
+              "scaleType": "Tile",
+              "tileSize": [
+                1.33,
+                0.0,
+                1.33,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "TextLabel",
+              "name": "X",
+              "size": [
+                0.9,
+                0.0,
+                0.9,
+                0.0
+              ],
+              "position": [
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 2,
+              "layoutOrder": 0,
+              "text": "X",
+              "textColor": [
+                255,
+                255,
+                255
+              ],
+              "textSize": 14.0,
+              "textScaled": true,
+              "textWrapped": true,
+              "textTransparency": 0.0,
+              "textXAlignment": "Center",
+              "textYAlignment": "Center",
+              "lineHeight": 1.0,
+              "font": "Montserrat",
+              "fontWeight": "Bold",
+              "strokes": [
+                {
+                  "color": [
+                    95,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 0.05,
+                  "applyMode": "Contextual",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "thicknessScale": true,
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "gradient": {
+                "colors": [
+                  [
+                    0,
+                    "#A48EC6"
+                  ],
+                  [
+                    0.4559585,
+                    "#FDFCFD"
+                  ],
+                  [
+                    1,
+                    "#FFFFFF"
+                  ]
+                ],
+                "transparency": [
+                  [
+                    0,
+                    0.0
+                  ],
+                  [
+                    1,
+                    0.0
+                  ]
+                ],
+                "rotation": -90.0,
+                "offset": [
+                  0.0,
+                  0.0
+                ]
+              },
+              "sizeRef": "parent"
+            }
+          ],
+          "sizeRef": "parent"
+        },
+        {
+          "type": "ImageLabel",
+          "name": "Studs",
+          "size": [
+            1.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "position": [
+            0.5,
+            0.0,
+            0.5,
+            0.0
+          ],
+          "anchor": [
+            0.5,
+            0.5
+          ],
+          "bg": [
+            255,
+            255,
+            255
+          ],
+          "bgTransparency": 1.0,
+          "borderSize": 0.0,
+          "zIndex": 1,
+          "layoutOrder": 0,
+          "icon": "rbxassetid://131959055895305",
+          "imageColor": [
+            255,
+            255,
+            255
+          ],
+          "imageTransparency": 0.71,
+          "scaleType": "Tile",
+          "tileSize": [
+            0.08,
+            0.0,
+            0.9,
+            0.0
+          ],
+          "sliceCenter": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sliceScale": 1.0,
+          "imageRectSize": [
+            0.0,
+            0.0
+          ],
+          "imageRectOffset": [
+            0.0,
+            0.0
+          ],
+          "sizeRef": "parent"
+        },
+        {
+          "type": "TextLabel",
+          "name": "Title",
+          "size": [
+            0.3741959,
+            0.0,
+            0.6978376,
+            0.0
+          ],
+          "position": [
+            0.2097211,
+            0.0,
+            0.4781506,
+            0.0
+          ],
+          "anchor": [
+            0.5,
+            0.5
+          ],
+          "bg": [
+            255,
+            255,
+            255
+          ],
+          "bgTransparency": 1.0,
+          "borderSize": 0.0,
+          "zIndex": 1,
+          "layoutOrder": 0,
+          "text": "Upgrades",
+          "textColor": [
+            255,
+            255,
+            255
+          ],
+          "textSize": 14.0,
+          "textScaled": true,
+          "textWrapped": true,
+          "textTransparency": 0.0,
+          "textXAlignment": "Left",
+          "textYAlignment": "Center",
+          "lineHeight": 1.0,
+          "font": "Montserrat",
+          "fontWeight": "Heavy",
+          "strokes": [
+            {
+              "color": [
+                0,
+                0,
+                0
+              ],
+              "transparency": 0.0,
+              "thickness": 0.08,
+              "applyMode": "Contextual",
+              "borderPosition": "Outer",
+              "lineJoin": "Round",
+              "thicknessScale": true,
+              "borderOffset": {
+                "scale": 0.0,
+                "offset": 0.0
+              }
+            }
+          ],
+          "gradient": {
+            "colors": [
+              [
+                0,
+                "#A48EC6"
+              ],
+              [
+                0.4559585,
+                "#FDFCFD"
+              ],
+              [
+                1,
+                "#FFFFFF"
+              ]
+            ],
+            "transparency": [
+              [
+                0,
+                0.0
+              ],
+              [
+                1,
+                0.0
+              ]
+            ],
+            "rotation": -90.0,
+            "offset": [
+              0.0,
+              0.0
+            ]
+          },
+          "sizeRef": "parent"
+        }
+      ],
+      "sizeRef": "parent"
+    },
+    {
+      "type": "ImageLabel",
+      "name": "Shadow",
+      "size": [
+        1.160684,
+        0.0,
+        1.556337,
+        0.0
+      ],
+      "position": [
+        0.4986901,
+        0.0,
+        0.6947,
+        0.0
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "bgTransparency": 1.0,
+      "borderSize": 0.0,
+      "zIndex": 1,
+      "layoutOrder": 0,
+      "icon": "rbxassetid://135121603863551",
+      "imageColor": [
+        0,
+        255,
+        30
+      ],
+      "imageTransparency": 0.5,
+      "scaleType": "Stretch",
+      "tileSize": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "sliceCenter": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sliceScale": 1.0,
+      "imageRectSize": [
+        0.0,
+        0.0
+      ],
+      "imageRectOffset": [
+        0.0,
+        0.0
+      ],
+      "corner": {
+        "scale": 0.1,
+        "offset": 0.0
+      },
+      "sizeRef": "parent"
+    },
+    {
+      "type": "Frame",
+      "name": "SpeedContent",
+      "size": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "position": [
+        0.5,
+        0.0,
+        0.5,
+        0.0
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "bgTransparency": 1.0,
+      "borderSize": 0.0,
+      "zIndex": 1,
+      "layoutOrder": 0,
+      "children": [
+        {
+          "type": "Frame",
+          "name": "BuyButtons",
+          "size": [
+            0.7,
+            0.0,
+            0.3310811,
+            0.0
+          ],
+          "position": [
+            0.622,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "anchor": [
+            0.5,
+            0.5
+          ],
+          "bg": [
+            255,
+            255,
+            255
+          ],
+          "bgTransparency": 1.0,
+          "borderSize": 0.0,
+          "zIndex": 1,
+          "layoutOrder": 0,
+          "list": {
+            "direction": "X",
+            "hAlign": "Center",
+            "vAlign": "Center",
+            "spacing": {
+              "scale": 0.02,
+              "offset": 0.0
+            }
+          },
+          "children": [
+            {
+              "type": "ImageButton",
+              "name": "Hold_1",
+              "size": [
+                0.291,
+                0.0,
+                0.663,
+                0.0
+              ],
+              "position": [
+                0.707,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 0.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 1,
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.0,
+              "scaleType": "Stretch",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "corner": {
+                "scale": 0.1,
+                "offset": 0.0
+              },
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 0.07,
+                  "applyMode": "Border",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "thicknessScale": true,
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                },
+                {
+                  "color": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "transparency": 0.34,
+                  "thickness": 0.07,
+                  "applyMode": "Border",
+                  "borderPosition": "Inner",
+                  "lineJoin": "Round",
+                  "thicknessScale": true,
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "gradient": {
+                "colors": [
+                  [
+                    0,
+                    "#00AA00"
+                  ],
+                  [
+                    1,
+                    "#00FF7F"
+                  ]
+                ],
+                "transparency": [
+                  [
+                    0,
+                    0.0
+                  ],
+                  [
+                    1,
+                    0.0
+                  ]
+                ],
+                "rotation": -90.0,
+                "offset": [
+                  0.0,
+                  0.0
+                ]
+              },
+              "children": [
+                {
+                  "type": "TextLabel",
+                  "name": "Amount",
+                  "size": [
+                    0.9,
+                    0.0,
+                    0.8076923,
+                    0.0
+                  ],
+                  "position": [
+                    0.5,
+                    0.0,
+                    0.5,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 1.0,
+                  "borderSize": 0.0,
+                  "zIndex": 2,
+                  "layoutOrder": 0,
+                  "text": "67M$",
+                  "textColor": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "textSize": 14.0,
+                  "textScaled": true,
+                  "textWrapped": true,
+                  "textTransparency": 0.0,
+                  "textXAlignment": "Center",
+                  "textYAlignment": "Center",
+                  "lineHeight": 1.0,
+                  "font": "Montserrat",
+                  "fontWeight": "Heavy",
+                  "strokes": [
+                    {
+                      "color": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "transparency": 0.0,
+                      "thickness": 0.05,
+                      "applyMode": "Contextual",
+                      "borderPosition": "Outer",
+                      "lineJoin": "Round",
+                      "thicknessScale": true,
+                      "borderOffset": {
+                        "scale": 0.0,
+                        "offset": 0.0
+                      }
+                    }
+                  ],
+                  "sizeRef": "parent"
+                },
+                {
+                  "type": "ImageLabel",
+                  "name": "Studs",
+                  "size": [
+                    1.0,
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.5,
+                    0.0,
+                    0.5,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 1.0,
+                  "borderSize": 0.0,
+                  "zIndex": 1,
+                  "layoutOrder": 0,
+                  "imageColor": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "imageTransparency": 0.5,
+                  "scaleType": "Tile",
+                  "tileSize": [
+                    0.4,
+                    0.0,
+                    1.5,
+                    0.0
+                  ],
+                  "sliceCenter": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "sliceScale": 1.0,
+                  "imageRectSize": [
+                    0.0,
+                    0.0
+                  ],
+                  "imageRectOffset": [
+                    0.0,
+                    0.0
+                  ],
+                  "sizeRef": "parent"
+                },
+                {
+                  "type": "TextLabel",
+                  "name": "Hold_3",
+                  "size": [
+                    0.8760052,
+                    0.0,
+                    0.476612,
+                    0.0
+                  ],
+                  "position": [
+                    0.4941385,
+                    0.0,
+                    -0.4053735,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 0.0,
+                  "borderSize": 0.0,
+                  "zIndex": 1,
+                  "layoutOrder": 0,
+                  "text": "",
+                  "textColor": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "textSize": 14.0,
+                  "textScaled": true,
+                  "textWrapped": true,
+                  "textTransparency": 0.0,
+                  "textXAlignment": "Center",
+                  "textYAlignment": "Center",
+                  "lineHeight": 1.0,
+                  "font": "Montserrat",
+                  "fontWeight": "Bold",
+                  "gradient": {
+                    "colors": [
+                      [
+                        0,
+                        "#626262"
+                      ],
+                      [
+                        1,
+                        "#626262"
+                      ]
+                    ],
+                    "transparency": [
+                      [
+                        0,
+                        1.0
+                      ],
+                      [
+                        0.4987531,
+                        0.46875
+                      ],
+                      [
+                        1,
+                        1.0
+                      ]
+                    ],
+                    "rotation": 0.0,
+                    "offset": [
+                      0.0,
+                      0.0
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "TextLabel",
+                      "name": "Amount",
+                      "size": [
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0
+                      ],
+                      "position": [
+                        0.5,
+                        0.0,
+                        0.5,
+                        0.0
+                      ],
+                      "anchor": [
+                        0.5,
+                        0.5
+                      ],
+                      "bg": [
+                        255,
+                        255,
+                        255
+                      ],
+                      "bgTransparency": 1.0,
+                      "borderSize": 0.0,
+                      "zIndex": 1,
+                      "layoutOrder": 0,
+                      "text": "Buy 26",
+                      "textColor": [
+                        255,
+                        255,
+                        255
+                      ],
+                      "textSize": 14.0,
+                      "textScaled": true,
+                      "textWrapped": true,
+                      "textTransparency": 0.0,
+                      "textXAlignment": "Center",
+                      "textYAlignment": "Center",
+                      "lineHeight": 1.0,
+                      "font": "FredokaOne",
+                      "fontWeight": "Regular",
+                      "strokes": [
+                        {
+                          "color": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "transparency": 0.0,
+                          "thickness": 2.0,
+                          "applyMode": "Contextual",
+                          "borderPosition": "Outer",
+                          "lineJoin": "Round",
+                          "borderOffset": {
+                            "scale": 0.0,
+                            "offset": 0.0
+                          }
+                        }
+                      ],
+                      "sizeRef": "parent"
+                    }
+                  ],
+                  "sizeRef": "parent"
+                }
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "ImageButton",
+              "name": "Hold_2",
+              "size": [
+                0.291,
+                0.0,
+                0.663,
+                0.0
+              ],
+              "position": [
+                0.707,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 0.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 1,
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.0,
+              "scaleType": "Stretch",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "corner": {
+                "scale": 0.1,
+                "offset": 0.0
+              },
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 0.07,
+                  "applyMode": "Border",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "thicknessScale": true,
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                },
+                {
+                  "color": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "transparency": 0.34,
+                  "thickness": 0.07,
+                  "applyMode": "Border",
+                  "borderPosition": "Inner",
+                  "lineJoin": "Round",
+                  "thicknessScale": true,
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "gradient": {
+                "colors": [
+                  [
+                    0,
+                    "#00AA00"
+                  ],
+                  [
+                    1,
+                    "#00FF7F"
+                  ]
+                ],
+                "transparency": [
+                  [
+                    0,
+                    0.0
+                  ],
+                  [
+                    1,
+                    0.0
+                  ]
+                ],
+                "rotation": -90.0,
+                "offset": [
+                  0.0,
+                  0.0
+                ]
+              },
+              "children": [
+                {
+                  "type": "TextLabel",
+                  "name": "Amount",
+                  "size": [
+                    0.9,
+                    0.0,
+                    0.8076923,
+                    0.0
+                  ],
+                  "position": [
+                    0.5,
+                    0.0,
+                    0.5,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 1.0,
+                  "borderSize": 0.0,
+                  "zIndex": 2,
+                  "layoutOrder": 0,
+                  "text": "309.1M$",
+                  "textColor": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "textSize": 14.0,
+                  "textScaled": true,
+                  "textWrapped": true,
+                  "textTransparency": 0.0,
+                  "textXAlignment": "Center",
+                  "textYAlignment": "Center",
+                  "lineHeight": 1.0,
+                  "font": "Montserrat",
+                  "fontWeight": "Heavy",
+                  "strokes": [
+                    {
+                      "color": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "transparency": 0.0,
+                      "thickness": 0.05,
+                      "applyMode": "Contextual",
+                      "borderPosition": "Outer",
+                      "lineJoin": "Round",
+                      "thicknessScale": true,
+                      "borderOffset": {
+                        "scale": 0.0,
+                        "offset": 0.0
+                      }
+                    }
+                  ],
+                  "sizeRef": "parent"
+                },
+                {
+                  "type": "ImageLabel",
+                  "name": "Studs",
+                  "size": [
+                    1.0,
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.5,
+                    0.0,
+                    0.5,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 1.0,
+                  "borderSize": 0.0,
+                  "zIndex": 1,
+                  "layoutOrder": 0,
+                  "imageColor": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "imageTransparency": 0.5,
+                  "scaleType": "Tile",
+                  "tileSize": [
+                    0.4,
+                    0.0,
+                    1.5,
+                    0.0
+                  ],
+                  "sliceCenter": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "sliceScale": 1.0,
+                  "imageRectSize": [
+                    0.0,
+                    0.0
+                  ],
+                  "imageRectOffset": [
+                    0.0,
+                    0.0
+                  ],
+                  "sizeRef": "parent"
+                },
+                {
+                  "type": "TextLabel",
+                  "name": "Hold_3",
+                  "size": [
+                    0.876005,
+                    0.0,
+                    0.476612,
+                    0.0
+                  ],
+                  "position": [
+                    0.4941384,
+                    0.0,
+                    -0.4053735,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 0.0,
+                  "borderSize": 0.0,
+                  "zIndex": 1,
+                  "layoutOrder": 0,
+                  "text": "",
+                  "textColor": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "textSize": 14.0,
+                  "textScaled": true,
+                  "textWrapped": true,
+                  "textTransparency": 0.0,
+                  "textXAlignment": "Center",
+                  "textYAlignment": "Center",
+                  "lineHeight": 1.0,
+                  "font": "Montserrat",
+                  "fontWeight": "Bold",
+                  "gradient": {
+                    "colors": [
+                      [
+                        0,
+                        "#626262"
+                      ],
+                      [
+                        1,
+                        "#626262"
+                      ]
+                    ],
+                    "transparency": [
+                      [
+                        0,
+                        1.0
+                      ],
+                      [
+                        0.4987531,
+                        0.46875
+                      ],
+                      [
+                        1,
+                        1.0
+                      ]
+                    ],
+                    "rotation": 0.0,
+                    "offset": [
+                      0.0,
+                      0.0
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "TextLabel",
+                      "name": "Amount",
+                      "size": [
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0
+                      ],
+                      "position": [
+                        0.5,
+                        0.0,
+                        0.5,
+                        0.0
+                      ],
+                      "anchor": [
+                        0.5,
+                        0.5
+                      ],
+                      "bg": [
+                        255,
+                        255,
+                        255
+                      ],
+                      "bgTransparency": 1.0,
+                      "borderSize": 0.0,
+                      "zIndex": 1,
+                      "layoutOrder": 0,
+                      "text": "Buy 26",
+                      "textColor": [
+                        255,
+                        255,
+                        255
+                      ],
+                      "textSize": 14.0,
+                      "textScaled": true,
+                      "textWrapped": true,
+                      "textTransparency": 0.0,
+                      "textXAlignment": "Center",
+                      "textYAlignment": "Center",
+                      "lineHeight": 1.0,
+                      "font": "FredokaOne",
+                      "fontWeight": "Regular",
+                      "strokes": [
+                        {
+                          "color": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "transparency": 0.0,
+                          "thickness": 2.0,
+                          "applyMode": "Contextual",
+                          "borderPosition": "Outer",
+                          "lineJoin": "Round",
+                          "borderOffset": {
+                            "scale": 0.0,
+                            "offset": 0.0
+                          }
+                        }
+                      ],
+                      "sizeRef": "parent"
+                    }
+                  ],
+                  "sizeRef": "parent"
+                }
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "ImageButton",
+              "name": "Hold_3",
+              "size": [
+                0.291,
+                0.0,
+                0.663,
+                0.0
+              ],
+              "position": [
+                0.707,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 0.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 1,
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.0,
+              "scaleType": "Stretch",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "corner": {
+                "scale": 0.1,
+                "offset": 0.0
+              },
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 0.07,
+                  "applyMode": "Border",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "thicknessScale": true,
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                },
+                {
+                  "color": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "transparency": 0.34,
+                  "thickness": 0.07,
+                  "applyMode": "Border",
+                  "borderPosition": "Inner",
+                  "lineJoin": "Round",
+                  "thicknessScale": true,
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "gradient": {
+                "colors": [
+                  [
+                    0,
+                    "#00AA00"
+                  ],
+                  [
+                    1,
+                    "#00FF7F"
+                  ]
+                ],
+                "transparency": [
+                  [
+                    0,
+                    0.0
+                  ],
+                  [
+                    1,
+                    0.0
+                  ]
+                ],
+                "rotation": -90.0,
+                "offset": [
+                  0.0,
+                  0.0
+                ]
+              },
+              "children": [
+                {
+                  "type": "TextLabel",
+                  "name": "Amount",
+                  "size": [
+                    0.9,
+                    0.0,
+                    0.8076923,
+                    0.0
+                  ],
+                  "position": [
+                    0.5,
+                    0.0,
+                    0.5,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 1.0,
+                  "borderSize": 0.0,
+                  "zIndex": 2,
+                  "layoutOrder": 0,
+                  "text": "3.4B$",
+                  "textColor": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "textSize": 14.0,
+                  "textScaled": true,
+                  "textWrapped": true,
+                  "textTransparency": 0.0,
+                  "textXAlignment": "Center",
+                  "textYAlignment": "Center",
+                  "lineHeight": 1.0,
+                  "font": "Montserrat",
+                  "fontWeight": "Heavy",
+                  "strokes": [
+                    {
+                      "color": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "transparency": 0.0,
+                      "thickness": 0.05,
+                      "applyMode": "Contextual",
+                      "borderPosition": "Outer",
+                      "lineJoin": "Round",
+                      "thicknessScale": true,
+                      "borderOffset": {
+                        "scale": 0.0,
+                        "offset": 0.0
+                      }
+                    }
+                  ],
+                  "sizeRef": "parent"
+                },
+                {
+                  "type": "ImageLabel",
+                  "name": "Studs",
+                  "size": [
+                    1.0,
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.5,
+                    0.0,
+                    0.5,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 1.0,
+                  "borderSize": 0.0,
+                  "zIndex": 1,
+                  "layoutOrder": 0,
+                  "imageColor": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "imageTransparency": 0.5,
+                  "scaleType": "Tile",
+                  "tileSize": [
+                    0.4,
+                    0.0,
+                    1.5,
+                    0.0
+                  ],
+                  "sliceCenter": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "sliceScale": 1.0,
+                  "imageRectSize": [
+                    0.0,
+                    0.0
+                  ],
+                  "imageRectOffset": [
+                    0.0,
+                    0.0
+                  ],
+                  "sizeRef": "parent"
+                },
+                {
+                  "type": "TextLabel",
+                  "name": "Hold_3",
+                  "size": [
+                    0.876005,
+                    0.0,
+                    0.476612,
+                    0.0
+                  ],
+                  "position": [
+                    0.4941384,
+                    0.0,
+                    -0.4053735,
+                    0.0
+                  ],
+                  "anchor": [
+                    0.5,
+                    0.5
+                  ],
+                  "bg": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "bgTransparency": 0.0,
+                  "borderSize": 0.0,
+                  "zIndex": 1,
+                  "layoutOrder": 0,
+                  "text": "",
+                  "textColor": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "textSize": 14.0,
+                  "textScaled": true,
+                  "textWrapped": true,
+                  "textTransparency": 0.0,
+                  "textXAlignment": "Center",
+                  "textYAlignment": "Center",
+                  "lineHeight": 1.0,
+                  "font": "Montserrat",
+                  "fontWeight": "Bold",
+                  "gradient": {
+                    "colors": [
+                      [
+                        0,
+                        "#626262"
+                      ],
+                      [
+                        1,
+                        "#626262"
+                      ]
+                    ],
+                    "transparency": [
+                      [
+                        0,
+                        1.0
+                      ],
+                      [
+                        0.4987531,
+                        0.46875
+                      ],
+                      [
+                        1,
+                        1.0
+                      ]
+                    ],
+                    "rotation": 0.0,
+                    "offset": [
+                      0.0,
+                      0.0
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "TextLabel",
+                      "name": "Amount",
+                      "size": [
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0
+                      ],
+                      "position": [
+                        0.5,
+                        0.0,
+                        0.5,
+                        0.0
+                      ],
+                      "anchor": [
+                        0.5,
+                        0.5
+                      ],
+                      "bg": [
+                        255,
+                        255,
+                        255
+                      ],
+                      "bgTransparency": 1.0,
+                      "borderSize": 0.0,
+                      "zIndex": 1,
+                      "layoutOrder": 0,
+                      "text": "Buy 26",
+                      "textColor": [
+                        255,
+                        255,
+                        255
+                      ],
+                      "textSize": 14.0,
+                      "textScaled": true,
+                      "textWrapped": true,
+                      "textTransparency": 0.0,
+                      "textXAlignment": "Center",
+                      "textYAlignment": "Center",
+                      "lineHeight": 1.0,
+                      "font": "FredokaOne",
+                      "fontWeight": "Regular",
+                      "strokes": [
+                        {
+                          "color": [
+                            0,
+                            0,
+                            0
+                          ],
+                          "transparency": 0.0,
+                          "thickness": 2.0,
+                          "applyMode": "Contextual",
+                          "borderPosition": "Outer",
+                          "lineJoin": "Round",
+                          "borderOffset": {
+                            "scale": 0.0,
+                            "offset": 0.0
+                          }
+                        }
+                      ],
+                      "sizeRef": "parent"
+                    }
+                  ],
+                  "sizeRef": "parent"
+                }
+              ],
+              "sizeRef": "parent"
+            }
+          ],
+          "sizeRef": "parent"
+        },
+        {
+          "type": "Frame",
+          "name": "Icon",
+          "size": [
+            0.2165184,
+            0.0,
+            0.7167998,
+            0.0
+          ],
+          "position": [
+            0.1472354,
+            0.0,
+            0.4978699,
+            0.0
+          ],
+          "anchor": [
+            0.5,
+            0.5
+          ],
+          "bg": [
+            113,
+            113,
+            113
+          ],
+          "bgTransparency": 0.5,
+          "borderSize": 0.0,
+          "zIndex": 2,
+          "layoutOrder": 0,
+          "corner": {
+            "scale": 0.018,
+            "offset": 0.0
+          },
+          "strokes": [
+            {
+              "color": [
+                0,
+                0,
+                0
+              ],
+              "transparency": 0.0,
+              "thickness": 0.022,
+              "applyMode": "Border",
+              "borderPosition": "Outer",
+              "lineJoin": "Round",
+              "thicknessScale": true,
+              "borderOffset": {
+                "scale": 0.0,
+                "offset": 0.0
+              }
+            }
+          ],
+          "gradient": {
+            "colors": [
+              [
+                0,
+                "#D1D1D1"
+              ],
+              [
+                1,
+                "#797979"
+              ]
+            ],
+            "transparency": [
+              [
+                0,
+                0.0
+              ],
+              [
+                1,
+                0.0
+              ]
+            ],
+            "rotation": 90.014,
+            "offset": [
+              0.0,
+              0.0
+            ]
+          },
+          "children": [
+            {
+              "type": "ImageLabel",
+              "name": "shinyOverlay",
+              "size": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "position": [
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                163,
+                162,
+                165
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.16,
+              "scaleType": "Stretch",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "corner": {
+                "scale": 0.018,
+                "offset": 0.0
+              },
+              "sizeRef": "parent"
+            },
+            {
+              "type": "ImageLabel",
+              "name": "ImageLabel",
+              "size": [
+                1.217451,
+                0.0,
+                1.217451,
+                0.0
+              ],
+              "position": [
+                0.4241931,
+                0.0,
+                0.4241103,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "icon": "rbxassetid://124687746638603",
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.53,
+              "scaleType": "Fit",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "ImageLabel",
+              "name": "ImageLabel",
+              "size": [
+                0.8690833,
+                0.0,
+                0.8690836,
+                0.0
+              ],
+              "position": [
+                0.5959579,
+                0.0,
+                0.597067,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "icon": "rbxassetid://124687746638603",
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.0,
+              "scaleType": "Fit",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "ImageLabel",
+              "name": "ImageLabel",
+              "size": [
+                1.539456,
+                0.0,
+                1.539456,
+                0.0
+              ],
+              "position": [
+                0.2631907,
+                0.0,
+                0.263108,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": -1,
+              "layoutOrder": 0,
+              "icon": "rbxassetid://124687746638603",
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.82,
+              "scaleType": "Fit",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "sizeRef": "parent"
+            }
+          ],
+          "sizeRef": "parent"
+        },
+        {
+          "type": "Frame",
+          "name": "Title",
+          "size": [
+            0.5,
+            0.0,
+            0.2972973,
+            0.0
+          ],
+          "position": [
+            0.434,
+            0.0,
+            0.334,
+            0.0
+          ],
+          "anchor": [
+            0.5,
+            0.5
+          ],
+          "bg": [
+            255,
+            255,
+            255
+          ],
+          "bgTransparency": 1.0,
+          "borderSize": 0.0,
+          "zIndex": 3,
+          "layoutOrder": 0,
+          "children": [
+            {
+              "type": "TextLabel",
+              "name": "Speed",
+              "size": [
+                0.4196078,
+                0.0,
+                0.8068182,
+                0.0
+              ],
+              "position": [
+                0.2731107,
+                0.0,
+                0.2423095,
+                0.0
+              ],
+              "anchor": [
+                0.0,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "text": "Speed:",
+              "textColor": [
+                255,
+                255,
+                255
+              ],
+              "textSize": 14.0,
+              "textScaled": true,
+              "textWrapped": true,
+              "textTransparency": 0.0,
+              "textXAlignment": "Left",
+              "textYAlignment": "Center",
+              "lineHeight": 1.0,
+              "font": "Montserrat",
+              "fontWeight": "Heavy",
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 5.0,
+                  "applyMode": "Contextual",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "TextLabel",
+              "name": "CurrentSpeed",
+              "size": [
+                0.1686275,
+                0.0,
+                0.8068182,
+                0.0
+              ],
+              "position": [
+                0.7305605,
+                0.0,
+                0.2423095,
+                0.0
+              ],
+              "anchor": [
+                0.0,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "text": "88",
+              "textColor": [
+                255,
+                255,
+                255
+              ],
+              "textSize": 14.0,
+              "textScaled": true,
+              "textWrapped": true,
+              "textTransparency": 0.0,
+              "textXAlignment": "Center",
+              "textYAlignment": "Center",
+              "lineHeight": 1.0,
+              "font": "Montserrat",
+              "fontWeight": "Heavy",
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 5.0,
+                  "applyMode": "Contextual",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "ImageLabel",
+              "name": "Arrow",
+              "size": [
+                0.1490196,
+                0.0,
+                0.7727272,
+                0.0
+              ],
+              "position": [
+                0.6,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "anchor": [
+                0.0,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.0,
+              "scaleType": "Stretch",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "TextLabel",
+              "name": "NextSpeed",
+              "size": [
+                0.1686275,
+                0.0,
+                0.8068182,
+                0.0
+              ],
+              "position": [
+                1.070569,
+                0.0,
+                0.2423095,
+                0.0
+              ],
+              "anchor": [
+                0.0,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "text": "89",
+              "textColor": [
+                255,
+                215,
+                0
+              ],
+              "textSize": 14.0,
+              "textScaled": true,
+              "textWrapped": true,
+              "textTransparency": 0.0,
+              "textXAlignment": "Center",
+              "textYAlignment": "Center",
+              "lineHeight": 1.0,
+              "font": "Montserrat",
+              "fontWeight": "Heavy",
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 5.0,
+                  "applyMode": "Contextual",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "ImageLabel",
+              "name": "ImageLabel",
+              "size": [
+                0.1427761,
+                0.0,
+                0.7133261,
+                0.0
+              ],
+              "position": [
+                0.992204,
+                0.0,
+                0.2890555,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "icon": "rbxassetid://108065430497776",
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.0,
+              "scaleType": "Stretch",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "TextLabel",
+              "name": "Shrink",
+              "size": [
+                0.4376361,
+                0.0,
+                0.8068181,
+                0.0
+              ],
+              "position": [
+                0.2679843,
+                0.0,
+                1.145095,
+                0.0
+              ],
+              "anchor": [
+                0.0,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "text": "Shrink:",
+              "textColor": [
+                255,
+                255,
+                255
+              ],
+              "textSize": 14.0,
+              "textScaled": true,
+              "textWrapped": true,
+              "textTransparency": 0.0,
+              "textXAlignment": "Left",
+              "textYAlignment": "Center",
+              "lineHeight": 1.0,
+              "font": "Montserrat",
+              "fontWeight": "Heavy",
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 5.0,
+                  "applyMode": "Contextual",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "TextLabel",
+              "name": "CurrentSpeed",
+              "size": [
+                0.1686275,
+                0.0,
+                0.8068182,
+                0.0
+              ],
+              "position": [
+                0.7305605,
+                0.0,
+                1.130766,
+                0.0
+              ],
+              "anchor": [
+                0.0,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "text": "5'5",
+              "textColor": [
+                255,
+                255,
+                255
+              ],
+              "textSize": 14.0,
+              "textScaled": true,
+              "textWrapped": true,
+              "textTransparency": 0.0,
+              "textXAlignment": "Center",
+              "textYAlignment": "Center",
+              "lineHeight": 1.0,
+              "font": "Montserrat",
+              "fontWeight": "Heavy",
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 5.0,
+                  "applyMode": "Contextual",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "TextLabel",
+              "name": "NextSpeed",
+              "size": [
+                0.1686275,
+                0.0,
+                0.8068182,
+                0.0
+              ],
+              "position": [
+                1.065443,
+                0.0,
+                1.087776,
+                0.0
+              ],
+              "anchor": [
+                0.0,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "text": "5'3",
+              "textColor": [
+                255,
+                215,
+                0
+              ],
+              "textSize": 14.0,
+              "textScaled": true,
+              "textWrapped": true,
+              "textTransparency": 0.0,
+              "textXAlignment": "Center",
+              "textYAlignment": "Center",
+              "lineHeight": 1.0,
+              "font": "Montserrat",
+              "fontWeight": "Heavy",
+              "strokes": [
+                {
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "transparency": 0.0,
+                  "thickness": 5.0,
+                  "applyMode": "Contextual",
+                  "borderPosition": "Outer",
+                  "lineJoin": "Round",
+                  "borderOffset": {
+                    "scale": 0.0,
+                    "offset": 0.0
+                  }
+                }
+              ],
+              "sizeRef": "parent"
+            },
+            {
+              "type": "ImageLabel",
+              "name": "ImageLabel",
+              "size": [
+                0.1427761,
+                0.0,
+                0.7133261,
+                0.0
+              ],
+              "position": [
+                0.992204,
+                0.0,
+                1.134522,
+                0.0
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "bg": [
+                255,
+                255,
+                255
+              ],
+              "bgTransparency": 1.0,
+              "borderSize": 0.0,
+              "zIndex": 1,
+              "layoutOrder": 0,
+              "icon": "rbxassetid://108065430497776",
+              "imageColor": [
+                255,
+                255,
+                255
+              ],
+              "imageTransparency": 0.0,
+              "scaleType": "Stretch",
+              "tileSize": [
+                1.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              "sliceCenter": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "sliceScale": 1.0,
+              "imageRectSize": [
+                0.0,
+                0.0
+              ],
+              "imageRectOffset": [
+                0.0,
+                0.0
+              ],
+              "sizeRef": "parent"
+            }
+          ],
+          "sizeRef": "parent"
+        }
+      ],
+      "sizeRef": "parent"
+    }
+  ],
+  "sizeRef": "viewport"
+}
