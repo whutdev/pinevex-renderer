@@ -1447,7 +1447,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--default-size-ref",
-        choices=["parent"],
+        choices=["parent", "viewport"],
         default="parent",
         help="Fallback sizeRef when omitted in JSON (default: parent).",
     )
