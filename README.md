@@ -22,7 +22,7 @@ Rendered by Pinevex Renderer
 
 Rendered by Pinevex Renderer
 
-![Pinevex Renderer rendering a Roblox-style HUD test UI](docs/assets/hudtest-transparent-render.png)
+![Pinevex Renderer rendering a Roblox-style HUD test UI](docs/assets/hudtest-vercel-render.png)
 
 Rendered by Pinevex Renderer
 
