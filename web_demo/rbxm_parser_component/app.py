@@ -3,7 +3,7 @@
 import json
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import JSONResponse
@@ -35,33 +35,67 @@ _RENDERABLE_CLASSES = {
 }
 
 
-def _find_renderable(nodes: list[dict[str, Any]]) -> dict[str, Any] | None:
+class RenderableMatch(NamedTuple):
+    node: dict[str, Any]
+    screen_gui_disabled: bool
+
+
+def _prop_is_false(value: Any) -> bool:
+    return value is False or (isinstance(value, str) and value.lower() == "false")
+
+
+def _find_renderable(
+    nodes: list[dict[str, Any]],
+    screen_gui_disabled: bool = False,
+) -> RenderableMatch | None:
     for node in nodes:
         cls = node.get("className", "")
         if cls in _SCREEN_GUI_CLASSES:
+            props = node.get("properties") or {}
+            gui_disabled = screen_gui_disabled or _prop_is_false(props.get("Enabled"))
             children = node.get("children", [])
             if not children:
                 continue
             if len(children) == 1:
-                return children[0]
-            return {
-                "className": "Frame",
-                "name": node.get("name", "ScreenGui"),
-                "properties": {
-                    "Size": {
-                        "x": {"scale": 1, "offset": 0},
-                        "y": {"scale": 1, "offset": 0},
+                return RenderableMatch(children[0], gui_disabled)
+            return RenderableMatch(
+                {
+                    "className": "Frame",
+                    "name": node.get("name", "ScreenGui"),
+                    "properties": {
+                        "Size": {
+                            "x": {"scale": 1, "offset": 0},
+                            "y": {"scale": 1, "offset": 0},
+                        },
+                        "BackgroundTransparency": 1,
                     },
-                    "BackgroundTransparency": 1,
+                    "children": children,
                 },
-                "children": children,
-            }
+                gui_disabled,
+            )
         if cls in _RENDERABLE_CLASSES:
-            return node
-        found = _find_renderable(node.get("children", []))
+            return RenderableMatch(node, screen_gui_disabled)
+        found = _find_renderable(node.get("children", []), screen_gui_disabled)
         if found:
             return found
     return None
+
+
+def _has_effectively_visible_node(
+    node: dict[str, Any],
+    inherited_visible: bool = True,
+) -> bool:
+    visible = inherited_visible and node.get("visible") is not False
+    if visible:
+        return True
+    children = node.get("children", [])
+    if not isinstance(children, list):
+        return False
+    return any(
+        _has_effectively_visible_node(child, visible)
+        for child in children
+        if isinstance(child, dict)
+    )
 
 
 def _count_nodes(node: dict[str, Any]) -> int:
@@ -94,7 +128,16 @@ async def parse_rbxm(file: UploadFile = File(...)):
             detail="No renderable ScreenGui or GuiObject was found in the file",
         )
 
-    obj = postprocess_pinevex_object(flatten_node(renderable))
+    obj = postprocess_pinevex_object(flatten_node(renderable.node))
+    warnings: list[str] = []
+    if renderable.screen_gui_disabled:
+        warnings.append(
+            "Heads up: this ScreenGui is disabled, so the render may be blank until Enabled=true."
+        )
+    if not _has_effectively_visible_node(obj):
+        warnings.append(
+            "Heads up: all renderable GUI objects in this RBXM have Visible=false, so the render may be blank."
+        )
     return JSONResponse(
         {
             "ok": True,
@@ -102,6 +145,7 @@ async def parse_rbxm(file: UploadFile = File(...)):
             "root_type": obj.get("type"),
             "root_name": obj.get("name"),
             "node_count": _count_nodes(obj),
+            "warnings": warnings,
             "pinevex_object": json.dumps(obj, ensure_ascii=False, indent=2),
         }
     )

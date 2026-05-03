@@ -57,9 +57,11 @@ export default function InputPane(props: InputPaneProps) {
         try {
           const parsed = await parseRbxmFile(file);
           props.onSourceNameChange(parsed.source_name || file.name);
+          const parsedText = `Parsed ${file.name}${parsed.node_count ? ` into ${parsed.node_count} UI nodes` : ""}. Rendering automatically.`;
+          const warningText = parsed.warnings?.filter(Boolean).join(" ");
           setNotice({
-            kind: "ok",
-            text: `Parsed ${file.name}${parsed.node_count ? ` into ${parsed.node_count} UI nodes` : ""}. Rendering automatically.`,
+            kind: warningText ? "warn" : "ok",
+            text: warningText ? `${parsedText} ${warningText}` : parsedText,
           });
           props.onParsedRbxm(
             parsed.pinevex_object,

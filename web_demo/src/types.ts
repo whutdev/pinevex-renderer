@@ -29,6 +29,7 @@ export interface ParseRbxmResult {
   root_type?: string;
   root_name?: string;
   node_count?: number;
+  warnings?: string[];
   pinevex_object: string;
 }
 
