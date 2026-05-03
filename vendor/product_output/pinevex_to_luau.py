@@ -204,6 +204,7 @@ _FONT_WEIGHT_MAP: dict[str, str] = {
     "Bold": "Enum.FontWeight.Bold",
     "ExtraBold": "Enum.FontWeight.ExtraBold",
     "Heavy": "Enum.FontWeight.Heavy",
+    "Black": "Enum.FontWeight.Heavy",
 }
 
 _FONT_STYLE_MAP: dict[str, str] = {
@@ -1231,8 +1232,7 @@ def pinevex_to_luau(
         preserve_custom_image_ids: Keep unresolved Roblox image IDs/URLs as-is
             instead of emitting Image = "" placeholders.
         default_size_ref: Fallback size reference when ``sizeRef`` is absent.
-            Defaults to "parent" for raw container trees. Use "viewport" only
-            for viewport-authored objects.
+            Defaults to "parent" for public renderer inputs.
 
     Returns:
         A string of Luau code ready to paste into Studio's command bar.
@@ -1447,7 +1447,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--default-size-ref",
-        choices=["viewport", "parent"],
+        choices=["parent"],
         default="parent",
         help="Fallback sizeRef when omitted in JSON (default: parent).",
     )

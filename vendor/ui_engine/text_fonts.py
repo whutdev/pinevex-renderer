@@ -475,6 +475,7 @@ _WEIGHT_MAP: dict[str, int] = {
     "Bold": 700,
     "ExtraBold": 800,
     "Heavy": 900,
+    "Black": 900,
 }
 _WEIGHT_MAP_CI = {k.lower(): v for k, v in _WEIGHT_MAP.items()}
 _SYNTHETIC_ITALIC_SKEW_X = -0.22
@@ -483,9 +484,12 @@ _SYNTHETIC_ITALIC_SKEW_X = -0.22
 def _parse_weight_value(raw: str | None) -> int | None:
     if not raw:
         return None
-    s = raw.strip()
+    s = str(raw).strip()
     if not s:
         return None
+    if s.startswith("Enum."):
+        parts = s.split(".")
+        s = parts[-1] if parts else s
     if s.isdigit():
         v = int(s)
         if 100 <= v <= 900 and v % 100 == 0:
