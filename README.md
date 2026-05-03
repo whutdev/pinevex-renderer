@@ -28,6 +28,8 @@ Pinevex Renderer is a CPU-only renderer that achieves near-parity with Roblox's 
 
 Try it in the live web demo: <a href="https://pinevex-renderer-demo.vercel.app" target="_blank" rel="noopener noreferrer">pinevex-renderer-demo.vercel.app</a>.
 
+The web demo accepts Pinevex JSON directly or a binary ScreenGui `.rbxm`, which it parses into Pinevex JSON before rendering.
+
 The project originally existed to generate AI synthetic training data: structured Roblox-style UI trees could be rendered into reference images for model training, reconstruction, and validation loops.
 
 It takes a nested UI tree and produces PNG previews that are close enough to be useful for reconstruction, validation, and export workflows. The renderer handles scale/offset layout, nested hierarchy, text fitting, strokes, gradients, rounded corners, tiled textures, icon references, and optional Luau generation.

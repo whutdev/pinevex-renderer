@@ -1,4 +1,4 @@
-import type { RenderResult } from "./types";
+import type { ParseRbxmResult, RenderResult } from "./types";
 
 interface RenderArgs {
   pinevexObject: string;
@@ -9,6 +9,7 @@ interface RenderArgs {
 }
 
 const RENDER_ENDPOINT = "/render";
+const PARSE_RBXM_ENDPOINT = "/parse-rbxm";
 const HEALTH_ENDPOINT = "/health";
 
 function parseObject(raw: string): unknown {
@@ -39,6 +40,25 @@ export async function callRender(args: RenderArgs): Promise<RenderResult> {
   }
 
   return (await res.json()) as RenderResult;
+}
+
+export async function parseRbxmFile(file: File): Promise<ParseRbxmResult> {
+  const body = new FormData();
+  body.append("file", file);
+
+  const res = await fetch(PARSE_RBXM_ENDPOINT, {
+    method: "POST",
+    body,
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(
+      `RBXM parser returned ${res.status} ${res.statusText}${text ? `: ${text}` : ""}`,
+    );
+  }
+
+  return (await res.json()) as ParseRbxmResult;
 }
 
 export async function checkHealth(signal?: AbortSignal): Promise<boolean> {

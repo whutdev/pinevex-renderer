@@ -20,6 +20,10 @@
       "dest": "/api/index.py"
     },
     {
+      "src": "/parse-rbxm",
+      "dest": "/api/parse_rbxm.py"
+    },
+    {
       "handle": "filesystem"
     },
     {

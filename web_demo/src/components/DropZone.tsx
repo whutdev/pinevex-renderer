@@ -51,7 +51,7 @@ export default function DropZone({ onFile, onPickClick }: DropZoneProps) {
         </span>
         <div className="dropzone__text">
           <strong>Drop a .rbxm or .json</strong>
-          <span>or click to browse — Pinevex JSON works now, .rbxm parsing pending backend</span>
+          <span>or click to browse - RBXM files are parsed into Pinevex JSON</span>
         </div>
       </div>
     </div>

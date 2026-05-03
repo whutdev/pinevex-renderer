@@ -10,12 +10,14 @@ behavior contract in [`REFERENCE_CONTRACT.md`](REFERENCE_CONTRACT.md).
 ## Architecture
 
 - The Vite dev server proxies `/render`, `/preview.png`, `/health`, and
-  `/font-health` to the FastAPI app at `http://127.0.0.1:8000`. Override with
-  `RENDERER_API_URL` if your API runs elsewhere.
+  `/font-health` to the renderer FastAPI app at `http://127.0.0.1:8000`.
+  Override with `RENDERER_API_URL` if your API runs elsewhere.
+- `/parse-rbxm` is served by the web demo RBXM parser component. Locally it
+  defaults to `http://127.0.0.1:8001`; override with `RBXM_PARSER_API_URL`.
 - Example fixtures and reference renders live in `public/examples/` and
   `public/renders/` so the example chips can lazy-fetch them.
-- `.rbxm` upload is wired through the drop zone but intentionally surfaces an
-  in-app notice that backend parsing is not yet exposed.
+- `.rbxm` upload parses a ScreenGui or renderable GuiObject into Pinevex JSON,
+  then populates the editor for rendering.
 
 ## Run locally
 
@@ -27,6 +29,12 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn api.index:app --reload
+```
+
+In another shell, start the web demo RBXM parser:
+
+```bash
+uvicorn api.parse_rbxm:app --port 8001 --reload
 ```
 
 In another shell, start the demo:

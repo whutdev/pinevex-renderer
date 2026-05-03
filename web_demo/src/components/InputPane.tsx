@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import type { ExampleSpec, ProcessingStage } from "../types";
+import { parseRbxmFile, prettyJson } from "../api";
 import ExampleChips from "./ExampleChips";
 import DropZone from "./DropZone";
 import JsonEditor from "./JsonEditor";
@@ -24,7 +25,9 @@ interface InputPaneProps {
 
 export default function InputPane(props: InputPaneProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [pasteWarning, setPasteWarning] = useState<string | null>(null);
+  const [notice, setNotice] = useState<{ kind: "ok" | "warn"; text: string } | null>(
+    null,
+  );
 
   const handleJsonFile = useCallback(
     async (file: File) => {
@@ -33,11 +36,12 @@ export default function InputPane(props: InputPaneProps) {
         JSON.parse(text);
         props.onChange(text);
         props.onSourceNameChange(file.name);
-        setPasteWarning(null);
+        setNotice(null);
       } catch (err) {
-        setPasteWarning(
-          `${file.name} is not valid JSON: ${err instanceof Error ? err.message : err}`,
-        );
+        setNotice({
+          kind: "warn",
+          text: `${file.name} is not valid JSON: ${err instanceof Error ? err.message : err}`,
+        });
       }
     },
     [props],
@@ -46,18 +50,33 @@ export default function InputPane(props: InputPaneProps) {
   const onFileSelect = useCallback(
     async (file: File) => {
       const lower = file.name.toLowerCase();
-      if (lower.endsWith(".rbxm") || lower.endsWith(".rbxmx")) {
-        setPasteWarning(
-          ".rbxm parsing is not wired in this renderer build yet. Paste Pinevex JSON or use an example.",
-        );
+      if (lower.endsWith(".rbxm")) {
         props.onSourceNameChange(file.name);
+        setNotice({ kind: "ok", text: `Parsing ${file.name}...` });
+        try {
+          const parsed = await parseRbxmFile(file);
+          props.onChange(prettyJson(parsed.pinevex_object));
+          props.onSourceNameChange(parsed.source_name || file.name);
+          setNotice({
+            kind: "ok",
+            text: `Parsed ${file.name}${parsed.node_count ? ` into ${parsed.node_count} UI nodes` : ""}. Ready to render.`,
+          });
+        } catch (err) {
+          setNotice({
+            kind: "warn",
+            text: err instanceof Error ? err.message : String(err),
+          });
+        }
         return;
       }
       if (lower.endsWith(".json") || file.type.includes("json")) {
         await handleJsonFile(file);
         return;
       }
-      setPasteWarning(`Unsupported file: ${file.name}. Expected .rbxm or .json.`);
+      setNotice({
+        kind: "warn",
+        text: `Unsupported file: ${file.name}. Expected .rbxm or .json.`,
+      });
     },
     [handleJsonFile, props],
   );
@@ -87,7 +106,7 @@ export default function InputPane(props: InputPaneProps) {
       <input
         ref={fileInputRef}
         type="file"
-        accept=".rbxm,.rbxmx,.json,application/json"
+        accept=".rbxm,.json,application/json"
         hidden
         onChange={(e) => {
           const file = e.target.files?.[0];
@@ -96,8 +115,8 @@ export default function InputPane(props: InputPaneProps) {
         }}
       />
 
-      {pasteWarning ? (
-        <div className="notice notice--warn">{pasteWarning}</div>
+      {notice ? (
+        <div className={`notice notice--${notice.kind}`}>{notice.text}</div>
       ) : null}
 
       <div className="section">

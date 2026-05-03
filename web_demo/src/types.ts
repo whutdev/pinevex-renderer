@@ -23,6 +23,15 @@ export interface RenderResult {
   luau?: string | null;
 }
 
+export interface ParseRbxmResult {
+  ok: boolean;
+  source_name: string;
+  root_type?: string;
+  root_name?: string;
+  node_count?: number;
+  pinevex_object: string;
+}
+
 export interface ExampleSpec {
   id: string;
   label: string;

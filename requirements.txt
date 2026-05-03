@@ -4,3 +4,5 @@ uvicorn[standard]>=0.34.0
 Pillow>=11.0.0
 skia-python>=87.0
 requests>=2.32.0
+python-multipart>=0.0.20
+zstandard>=0.23.0

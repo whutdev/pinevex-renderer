@@ -514,6 +514,11 @@ kbd {
   color: var(--warn);
   border-color: #f1d2a8;
 }
+.notice--ok {
+  background: #ecfdf3;
+  color: #166534;
+  border-color: #bbf7d0;
+}
 
 /* ── Example chips ─────────────────────────────────────────── */
 
