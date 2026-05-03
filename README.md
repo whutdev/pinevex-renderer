@@ -8,7 +8,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 <a href="https://pinevex-renderer-demo.vercel.app" target="_blank" rel="noopener noreferrer"><img alt="Web Demo" src="https://img.shields.io/badge/Web%20Demo-Live-brightgreen.svg"></a>
 
-<strong><a href="https://pinevex-renderer-demo.vercel.app" target="_blank" rel="noopener noreferrer">Open the live web demo</a></strong>
+<strong><a href="https://pinevex-renderer-demo.vercel.app" target="_blank" rel="noopener noreferrer">Test Pinevex Renderer with your own screengui RBXM in our web demo!</a></strong>
 
 ![Pinevex Renderer rendering a Roblox-style RobuxShop UI](docs/assets/robuxshop-transparent-render.png)
 
