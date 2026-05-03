@@ -1361,7 +1361,7 @@ def render_json(
     fonts_dir: Path | None = None,
     bg_color: tuple = (255, 255, 255),
     z_index_behavior: str = "Sibling",
-    default_size_ref: str = "viewport",
+    default_size_ref: str = "parent",
     debug: bool = False,
     out: dict | None = None,
     rect_map: dict | None = None,
@@ -1393,7 +1393,7 @@ def render_json(
         "fonts_dir": fonts_dir,
         "debug": debug,
         "_viewport_rect": root_rect,
-        "_default_size_ref": str(default_size_ref or "viewport").lower(),
+        "_default_size_ref": str(default_size_ref or "parent").lower(),
     }
     if rect_map is not None:
         ctx["_rect_map"] = rect_map
@@ -1423,7 +1423,7 @@ def collect_layout_info(
     width: int = BASE_WIDTH,
     height: int = BASE_HEIGHT,
     z_index_behavior: str = "Sibling",
-    default_size_ref: str = "viewport",
+    default_size_ref: str = "parent",
     out: dict | None = None,
     rect_map: dict | None = None,
     ignore_scroll_clipping: bool = False,
@@ -1437,7 +1437,7 @@ def collect_layout_info(
     root_rect = Rect(0, 0, width, height)
     ctx = {
         "_viewport_rect": root_rect,
-        "_default_size_ref": str(default_size_ref or "viewport").lower(),
+        "_default_size_ref": str(default_size_ref or "parent").lower(),
         "_ignore_scroll_clipping": bool(ignore_scroll_clipping),
     }
     if rect_map is not None:

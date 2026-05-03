@@ -277,7 +277,7 @@ def _render_preview_bytes(
         width=width,
         height=height,
         bg_color=bg_color,
-        default_size_ref="viewport",
+        default_size_ref="parent",
         out=render_out,
     )
     img = _crop_preview_image(img, render_out.get("crop_rect"), padding=0.12)
@@ -388,7 +388,7 @@ def render(req: RenderRequest, authorization: str | None = Header(default=None))
         except Exception:
             response["preview"] = None
     if req.include_luau:
-        response["luau"] = pinevex_to_luau(obj)
+        response["luau"] = pinevex_to_luau(obj, default_size_ref="parent")
 
     return response
 

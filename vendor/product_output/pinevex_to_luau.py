@@ -406,15 +406,15 @@ def _precomputed_parent_relative_size(
     if "autoSize" in parent_obj:
         return None
 
-    parent_size_ref = str(parent_obj.get("sizeRef", "viewport")).lower()
+    parent_size_ref = str(parent_obj.get("sizeRef", "parent")).lower()
     if parent_size_ref != "viewport":
         return None
 
     viewport = Rect(0.0, 0.0, float(BASE_WIDTH), float(BASE_HEIGHT))
     child_constraint = str(obj.get("sizeConstraint", "RelativeXY"))
     try:
-        parent_rect = resolve_rect(parent_obj, viewport, viewport_rect=viewport, default_size_ref="viewport")
-        child_rect = resolve_rect(obj, parent_rect, viewport_rect=viewport, default_size_ref="viewport")
+        parent_rect = resolve_rect(parent_obj, viewport, viewport_rect=viewport, default_size_ref="parent")
+        child_rect = resolve_rect(obj, parent_rect, viewport_rect=viewport, default_size_ref="parent")
     except Exception:
         return None
 
@@ -447,7 +447,7 @@ def _precomputed_viewport_relative_size(
 ) -> tuple[float, float, float, float] | None:
     viewport = Rect(0.0, 0.0, float(BASE_WIDTH), float(BASE_HEIGHT))
     try:
-        rect = resolve_rect(obj, viewport, viewport_rect=viewport, default_size_ref="viewport")
+        rect = resolve_rect(obj, viewport, viewport_rect=viewport, default_size_ref="parent")
     except Exception:
         return None
     if viewport.w <= 0 or viewport.h <= 0:
@@ -520,12 +520,12 @@ class PinevexTranslator:
         indent: str = "\t",
         parent_var: str = "screenGui",
         preserve_custom_image_ids: bool = False,
-        default_size_ref: str = "viewport",
+        default_size_ref: str = "parent",
     ) -> None:
         self.indent = indent
         self.parent_var = parent_var
         self.preserve_custom_image_ids = preserve_custom_image_ids
-        self.default_size_ref = str(default_size_ref or "viewport").lower()
+        self.default_size_ref = str(default_size_ref or "parent").lower()
         self._var = _VarState()
         self._lines: list[str] = []
         self._unresolved_icons: list[str] = []
@@ -1220,7 +1220,7 @@ def pinevex_to_luau(
     indent: str = "\t",
     parent_var: str = "screenGui",
     preserve_custom_image_ids: bool = False,
-    default_size_ref: str = "viewport",
+    default_size_ref: str = "parent",
 ) -> str:
     """Convert a PinevexObject dict to executable Luau code.
 
@@ -1231,7 +1231,8 @@ def pinevex_to_luau(
         preserve_custom_image_ids: Keep unresolved Roblox image IDs/URLs as-is
             instead of emitting Image = "" placeholders.
         default_size_ref: Fallback size reference when ``sizeRef`` is absent.
-            Use "viewport" for viewport-authored objects, "parent" for raw container trees.
+            Defaults to "parent" for raw container trees. Use "viewport" only
+            for viewport-authored objects.
 
     Returns:
         A string of Luau code ready to paste into Studio's command bar.
@@ -1447,8 +1448,8 @@ def main() -> None:
     parser.add_argument(
         "--default-size-ref",
         choices=["viewport", "parent"],
-        default="viewport",
-        help="Fallback sizeRef when omitted in JSON (default: viewport).",
+        default="parent",
+        help="Fallback sizeRef when omitted in JSON (default: parent).",
     )
     args = parser.parse_args()
 
