@@ -25,7 +25,7 @@ These are third-party runtime libraries from Mesa/libglvnd, X.Org/XCB, and Expat
 
 `src/ui_engine/fonts/` contains bundled typefaces used so render output is stable across local and serverless environments.
 
-The bundled font families include fonts distributed under licenses such as the SIL Open Font License 1.1, Apache License 2.0, and Ubuntu Font License 1.0. The generated `RobloxEmoji.ttf` compatibility font is included for Roblox private-use glyph rendering and is not a Roblox endorsement or trademark grant.
+The bundled font families include fonts distributed under licenses such as the SIL Open Font License 1.1, Apache License 2.0, and Ubuntu Font License 1.0. `TwemojiMozilla.ttf` is from Mozilla's [`twemoji-colr`](https://github.com/mozilla/twemoji-colr) package; its code is Apache License 2.0 and its Twemoji visual artwork is redistributed under CC BY 4.0. The generated `RobloxEmoji.ttf` compatibility font is included for Roblox private-use glyph rendering and is not a Roblox endorsement or trademark grant.
 
 Font files are not relicensed by Pinevex Renderer. Preserve their embedded copyright and license metadata when redistributing this repository.
 
