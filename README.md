@@ -26,6 +26,10 @@ Rendered by Pinevex Renderer
 
 Rendered by Pinevex Renderer
 
+![Pinevex Renderer rendering RTL2PCParts from an RBXM file](docs/assets/rtl2pcparts-transparent-render.png)
+
+Rendered by Pinevex Renderer from `Downloads/RTL2PCParts.rbxm`
+
 _yes, pinevex renderer can render THIS! ( and almost anything! )_
 
 </div>
@@ -158,6 +162,11 @@ curl -s http://127.0.0.1:8000/preview.png \
   --data '{"pinevex_object": '"$(cat examples/simple-ui.json)"', "viewport_size": [420, 180], "transparent_background": true}' \
   --output preview.png
 ```
+
+The larger [`examples/rtl2pcparts.json`](examples/rtl2pcparts.json) fixture was
+parsed from [`examples/RTL2PCParts.rbxm`](examples/RTL2PCParts.rbxm), copied
+from `Downloads/RTL2PCParts.rbxm`, and is also available as a quick-load example
+in the web demo.
 
 ## API
 
@@ -294,6 +303,8 @@ api/
   index.py                      FastAPI entrypoint
 examples/
   simple-ui.json                Minimal renderable UI tree
+  RTL2PCParts.rbxm              Source RBXM for the PC parts shop example
+  rtl2pcparts.json              Parsed Pinevex JSON fixture for that RBXM
 vendor/
   icon_library/manifest.json    Minimal public texture-key manifest
   native/                       Linux runtime libraries for hosted rendering

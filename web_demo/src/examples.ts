@@ -18,6 +18,14 @@ export const EXAMPLES: ExampleSpec[] = [
     viewport: [1920, 1080],
   },
   {
+    id: "rtl2pcparts",
+    label: "RTL2 PC Parts",
+    description: "RBXM-derived PC parts shop panel with many asset thumbnails.",
+    jsonPath: "examples/rtl2pcparts.json",
+    thumbnailPath: "renders/rtl2pcparts.png",
+    viewport: [1920, 1080],
+  },
+  {
     id: "upgrade",
     label: "Upgrade",
     description: "Upgrade card with tiered backgrounds and text fitting.",
