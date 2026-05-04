@@ -288,6 +288,20 @@ See [`examples/simple-ui.json`](examples/simple-ui.json) for a complete minimal 
 
 This repository contains the renderer/API runtime and small examples. The bundled icon manifest is a minimal texture-key subset, not the private asset catalog, and does not include concrete private asset IDs.
 
+### Why the renderer lives under `vendor/ui_engine`
+
+The actual renderer core lives in `vendor/ui_engine`. That name is historical:
+this repository originally only scoped the Vercel/web-demo wrapper, and
+`ui_engine` was imported as a vendored runtime from the larger Pinevex project.
+The repo has since grown into the public renderer artifact, so `vendor/ui_engine`
+is effectively the source root for layout, text, image, hit-testing, step
+debugging, and Skia rendering code.
+
+A future cleanup could move it to a more conventional path such as
+`src/ui_engine`, but that should be treated as a deliberate package-layout
+migration because the API, Vercel functions, examples, and import paths all
+depend on the current location.
+
 ## License
 
 Pinevex-authored source code is licensed under the [Apache License 2.0](LICENSE).
