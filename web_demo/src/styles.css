@@ -265,7 +265,12 @@ kbd {
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: -0.005em;
+  text-decoration: none;
   transition: background 90ms ease, border-color 90ms ease, color 90ms ease;
+}
+.btn--icon svg {
+  flex-shrink: 0;
+  display: block;
 }
 .btn:hover:not(:disabled) {
   background: var(--panel-2);
