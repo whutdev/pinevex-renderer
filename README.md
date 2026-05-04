@@ -28,8 +28,6 @@ Rendered by Pinevex Renderer
 
 ![Pinevex Renderer rendering RTL2PCParts from an RBXM file](docs/assets/rtl2pcparts-transparent-render.png)
 
-Rendered by Pinevex Renderer from `Downloads/RTL2PCParts.rbxm`
-
 _yes, pinevex renderer can render THIS! ( and almost anything! )_
 
 </div>
