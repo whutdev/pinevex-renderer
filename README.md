@@ -215,7 +215,7 @@ Returns a JSON response with the normalized object, optional base64 PNG preview,
 Capture every visual paint operation for a Pinevex JSON file:
 
 ```bash
-python -m vendor.ui_engine.debug_stepper examples/simple-ui.json \
+PYTHONPATH=src python -m ui_engine.debug_stepper examples/simple-ui.json \
   --viewport-size 420x180 \
   --output-dir pinevex_steps
 ```
@@ -224,7 +224,7 @@ The command writes numbered PNG frames and `steps.json`. Add `--tk` to open the
 step-through GUI:
 
 ```bash
-python -m vendor.ui_engine.debug_stepper examples/simple-ui.json \
+PYTHONPATH=src python -m ui_engine.debug_stepper examples/simple-ui.json \
   --viewport-size 420x180 \
   --output-dir pinevex_steps \
   --tk
@@ -243,13 +243,16 @@ Useful flags:
 The same feature is available from Python:
 
 ```python
-from vendor.ui_engine.debug_stepper import capture_steps, save_steps
+from ui_engine.debug_stepper import capture_steps, save_steps
 
 steps, metadata = capture_steps(pinevex_object, width=420, height=180)
 save_steps(steps, output_dir="pinevex_steps", metadata=metadata)
 ```
 
-For occlusion and selection debugging, `vendor.ui_engine.hit_test` exposes
+When importing `ui_engine` directly from a source checkout, run Python with
+`PYTHONPATH=src` or add `src/` to `sys.path`.
+
+For occlusion and selection debugging, `ui_engine.hit_test` exposes
 `get_objects_at_region`, `get_objects_at_instance`, `get_instance_rect`, and
 `get_instance_region`.
 
@@ -288,19 +291,13 @@ See [`examples/simple-ui.json`](examples/simple-ui.json) for a complete minimal 
 
 This repository contains the renderer/API runtime and small examples. The bundled icon manifest is a minimal texture-key subset, not the private asset catalog, and does not include concrete private asset IDs.
 
-### Why the renderer lives under `vendor/ui_engine`
+### Source layout note
 
-The actual renderer core lives in `vendor/ui_engine`. That name is historical:
-this repository originally only scoped the Vercel/web-demo wrapper, and
-`ui_engine` was imported as a vendored runtime from the larger Pinevex project.
-The repo has since grown into the public renderer artifact, so `vendor/ui_engine`
-is effectively the source root for layout, text, image, hit-testing, step
-debugging, and Skia rendering code.
-
-A future cleanup could move it to a more conventional path such as
-`src/ui_engine`, but that should be treated as a deliberate package-layout
-migration because the API, Vercel functions, examples, and import paths all
-depend on the current location.
+The renderer core lives in `src/ui_engine`. This repository originally only
+scoped the Vercel/web-demo wrapper, and `ui_engine` was imported as a vendored
+runtime from the larger Pinevex project. The repo has since grown into the
+public renderer artifact, so the renderer now uses a conventional `src/`
+layout.
 
 ## License
 
@@ -317,11 +314,12 @@ examples/
   simple-ui.json                Minimal renderable UI tree
   RTL2PCParts.rbxm              Source RBXM for the PC parts shop example
   rtl2pcparts.json              Parsed Pinevex JSON fixture for that RBXM
+src/
+  ui_engine/                    Layout, text, image, hit-test, step debugger, and Skia rendering code
 vendor/
   icon_library/manifest.json    Minimal public texture-key manifest
   native/                       Linux runtime libraries for hosted rendering
   product_output/               Pinevex postprocess and Luau export helpers
-  ui_engine/                    Layout, text, image, hit-test, step debugger, and Skia rendering code
 requirements.txt
 vercel.json
 ```

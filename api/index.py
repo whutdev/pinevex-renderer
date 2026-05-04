@@ -45,15 +45,15 @@ _preload_native_libs()
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-UI_ENGINE_ROOT = PROJECT_ROOT / "vendor" / "ui_engine"
+UI_ENGINE_ROOT = PROJECT_ROOT / "src" / "ui_engine"
 ICON_LIBRARY_ROOT = PROJECT_ROOT / "vendor" / "icon_library"
 PRODUCT_OUTPUT_ROOT = PROJECT_ROOT / "vendor" / "product_output"
 
 for required_path in (UI_ENGINE_ROOT, ICON_LIBRARY_ROOT, PRODUCT_OUTPUT_ROOT):
     if not required_path.exists():
-        raise RuntimeError(f"Missing required vendored path: {required_path.relative_to(PROJECT_ROOT)}")
+        raise RuntimeError(f"Missing required runtime path: {required_path.relative_to(PROJECT_ROOT)}")
 
-sys.path.insert(0, str(UI_ENGINE_ROOT.parent))
+sys.path.insert(0, str(PROJECT_ROOT / "src"))
 sys.path.insert(0, str(PRODUCT_OUTPUT_ROOT.parent))
 
 from ui_engine.renderer import render_json  # noqa: E402
