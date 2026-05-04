@@ -211,14 +211,22 @@ python -m vendor.ui_engine.debug_stepper examples/simple-ui.json \
   --output-dir pinevex_steps
 ```
 
-The command writes numbered PNG frames, `steps.json`, and `index.html`. Open
-`pinevex_steps/index.html` in a browser and use Left/Right, Space, Home, or End
-to inspect the render one draw call at a time.
+The command writes numbered PNG frames and `steps.json`. Add `--tk` to open the
+step-through GUI:
+
+```bash
+python -m vendor.ui_engine.debug_stepper examples/simple-ui.json \
+  --viewport-size 420x180 \
+  --output-dir pinevex_steps \
+  --tk
+```
+
+Use Left/Right, Space, Home, or End to inspect the render one draw call at a
+time.
 
 Useful flags:
 
-- `--open` opens the generated browser viewer automatically.
-- `--tk` opens the optional Tkinter viewer.
+- `--tk` opens the Tkinter step-through viewer.
 - `--debug` overlays renderer debug outlines.
 - `--transparent` uses a transparent canvas.
 - `--crop` crops frames when the input object sets `_crop: true`.

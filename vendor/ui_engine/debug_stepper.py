@@ -2,21 +2,17 @@
 
 The renderer already annotates its draw operations when the canvas supports
 ``annotate(text)``.  This module supplies that canvas, captures a PNG after
-each visual operation, and writes a small browser viewer so the output is easy
-to inspect without any private Pinevex archive paths.
+each visual operation, and opens a small Tk viewer for left/right stepping.
 """
 
 from __future__ import annotations
 
 import argparse
-import base64
-import html
 import io
 import json
 import signal
 import sys
 import tempfile
-import webbrowser
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -171,9 +167,8 @@ def save_steps(
     *,
     output_dir: Path | None = None,
     metadata: dict[str, Any] | None = None,
-    write_viewer: bool = True,
 ) -> Path:
-    """Write step PNGs, ``steps.json``, and optionally ``index.html``."""
+    """Write step PNGs and ``steps.json``."""
 
     out_dir = Path(output_dir) if output_dir else Path(tempfile.mkdtemp(prefix="pinevex_steps_"))
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -196,8 +191,6 @@ def save_steps(
 
     payload = {"metadata": metadata or {}, "steps": manifest_steps}
     (out_dir / "steps.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    if write_viewer:
-        (out_dir / "index.html").write_text(_viewer_html(payload), encoding="utf-8")
     return out_dir
 
 
@@ -290,81 +283,6 @@ def _crop_steps(
     ]
 
 
-def _viewer_html(payload: dict[str, Any]) -> str:
-    encoded = base64.b64encode(json.dumps(payload).encode("utf-8")).decode("ascii")
-    title = "Pinevex Paint Step Debugger"
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{html.escape(title)}</title>
-  <style>
-    :root {{ color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }}
-    body {{ margin: 0; background: #10131b; color: #f1f5f9; }}
-    .shell {{ min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }}
-    header, footer {{ padding: 12px 16px; background: #151a24; border-color: #283142; }}
-    header {{ border-bottom: 1px solid #283142; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }}
-    footer {{ border-top: 1px solid #283142; display: grid; gap: 8px; }}
-    h1 {{ font-size: 14px; margin: 0; font-weight: 650; }}
-    button {{ background: #222a3a; color: #f8fafc; border: 1px solid #334155; border-radius: 6px; padding: 7px 10px; cursor: pointer; }}
-    button:hover {{ background: #2c3548; }}
-    input[type="range"] {{ flex: 1 1 260px; }}
-    .stage {{ overflow: auto; display: grid; place-items: center; padding: 18px; }}
-    img {{ max-width: 100%; height: auto; background: #fff; box-shadow: 0 10px 40px rgba(0,0,0,.35); }}
-    .meta {{ color: #94a3b8; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }}
-    .annotation {{ font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }}
-  </style>
-</head>
-<body>
-  <div class="shell">
-    <header>
-      <h1>{html.escape(title)}</h1>
-      <button id="prev" type="button">Prev</button>
-      <button id="next" type="button">Next</button>
-      <input id="range" type="range" min="0" value="0">
-      <span id="count" class="meta"></span>
-    </header>
-    <main class="stage"><img id="frame" alt="paint step"></main>
-    <footer>
-      <div id="annotation" class="annotation"></div>
-      <div class="meta">Left/Right or Space to navigate. Home/End jump to first/last.</div>
-    </footer>
-  </div>
-  <script>
-    const manifest = JSON.parse(atob("{encoded}"));
-    const steps = manifest.steps || [];
-    let index = 0;
-    const frame = document.getElementById("frame");
-    const range = document.getElementById("range");
-    const count = document.getElementById("count");
-    const annotation = document.getElementById("annotation");
-    range.max = String(Math.max(0, steps.length - 1));
-    function show(nextIndex) {{
-      if (!steps.length) return;
-      index = Math.max(0, Math.min(steps.length - 1, nextIndex));
-      const step = steps[index];
-      frame.src = step.file;
-      range.value = String(index);
-      count.textContent = `Step ${{index + 1}}/${{steps.length}}`;
-      annotation.textContent = step.annotation || "";
-    }}
-    document.getElementById("prev").onclick = () => show(index - 1);
-    document.getElementById("next").onclick = () => show(index + 1);
-    range.oninput = () => show(Number(range.value));
-    window.addEventListener("keydown", (event) => {{
-      if (event.key === "ArrowRight" || event.key === " ") show(index + 1);
-      if (event.key === "ArrowLeft") show(index - 1);
-      if (event.key === "Home") show(0);
-      if (event.key === "End") show(steps.length - 1);
-    }});
-    show(0);
-  </script>
-</body>
-</html>
-"""
-
-
 def _parse_size(value: str) -> tuple[int, int]:
     try:
         left, right = value.lower().replace(" ", "").split("x", 1)
@@ -396,9 +314,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--debug", action="store_true", help="Draw renderer debug outlines")
     parser.add_argument("--crop", action="store_true", help="Crop frames when the object sets _crop: true")
     parser.add_argument("--crop-padding", type=float, default=0.0)
-    parser.add_argument("--open", action="store_true", help="Open the generated browser viewer")
-    parser.add_argument("--tk", action="store_true", help="Open the Tk viewer after writing files")
-    parser.add_argument("--no-viewer-file", action="store_true", help="Do not write index.html")
+    parser.add_argument("--tk", action="store_true", help="Open the Tk step-through viewer after writing files")
     args = parser.parse_args(argv)
 
     obj = _load_json(args.json)
@@ -419,13 +335,8 @@ def main(argv: list[str] | None = None) -> int:
         steps,
         output_dir=args.output_dir,
         metadata=metadata,
-        write_viewer=not args.no_viewer_file,
     )
     print(f"Wrote {len(steps)} paint steps to {output_dir}")
-    if not args.no_viewer_file:
-        print(f"Open {output_dir / 'index.html'} to inspect them.")
-    if args.open and not args.no_viewer_file:
-        webbrowser.open((output_dir / "index.html").resolve().as_uri())
     if args.tk:
         show_steps(steps)
     return 0
