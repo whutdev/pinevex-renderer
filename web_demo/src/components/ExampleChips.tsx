@@ -30,7 +30,10 @@ export default function ExampleChips({
           ) : (
             <span className="chip__thumb chip__thumb--blank" aria-hidden="true" />
           )}
-          <span className="chip__label">{e.label}</span>
+          <span className="chip__text">
+            <span className="chip__label">{e.label}</span>
+            <span className="chip__desc">{e.description}</span>
+          </span>
         </button>
       ))}
     </div>

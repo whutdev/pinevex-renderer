@@ -568,9 +568,25 @@ kbd {
 .chip__thumb--blank {
   background: repeating-conic-gradient(#eaeaec 0% 25%, #f6f6f7 0% 50%) 50% / 8px 8px;
 }
+.chip__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  gap: 1px;
+}
 .chip__label {
   font-size: 12px;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text);
+}
+.chip__desc {
+  display: none;
+  font-size: 11px;
+  color: var(--text-3);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1106,23 +1122,43 @@ kbd {
 /* ── Mobile fallback ───────────────────────────────────────── */
 
 @media (max-width: 880px) {
+  /* Let the document scroll naturally instead of trapping content
+     inside a 100vh app-shell — otherwise flex panes clip below the fold. */
+  html,
+  body,
+  #root {
+    height: auto;
+    min-height: 100%;
+  }
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+  }
   .workspace {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     overflow: visible;
+    min-height: 0;
   }
   .pane {
     overflow: visible;
+    min-height: 0;
   }
   .pane--input {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
+  /* Sections shouldn't fight each other for flex space on mobile —
+     the document scrolls, so each section just takes its content size. */
   .pane--input > .section--editor {
-    min-height: 280px;
+    flex: 0 0 auto;
+    min-height: 320px;
+  }
+  .editor {
+    min-height: 320px;
   }
   .pane--preview {
-    min-height: 60vh;
+    min-height: 70vh;
   }
   .topbar {
     grid-template-columns: 1fr auto;
@@ -1167,7 +1203,7 @@ kbd {
     scrollbar-width: thin;
   }
   .chips {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 }
 
@@ -1210,6 +1246,27 @@ kbd {
   }
   .pane__meta {
     font-size: 10.5px;
+  }
+  /* Examples become a clear vertical list with description visible. */
+  .chips {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .chip {
+    padding: 8px 10px 8px 8px;
+    min-height: 52px;
+    gap: 12px;
+  }
+  .chip__thumb {
+    width: 56px;
+    height: 40px;
+  }
+  .chip__label {
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .chip__desc {
+    display: block;
   }
   .control-row {
     grid-template-columns: 1fr 1fr;
