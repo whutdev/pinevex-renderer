@@ -31,13 +31,23 @@ function clampScale(s: number): number {
 export default function ZoomableImage({ src, alt }: ZoomableImageProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-  const dragRef = useRef<{
-    pointerId: number;
-    startX: number;
-    startY: number;
-    origX: number;
-    origY: number;
-  } | null>(null);
+  const pointersRef = useRef<Map<number, { x: number; y: number }>>(new Map());
+  const gestureRef = useRef<
+    | { mode: "idle" }
+    | {
+        mode: "drag";
+        pointerId: number;
+        startX: number;
+        startY: number;
+        startTransform: Transform;
+      }
+    | {
+        mode: "pinch";
+        startCenter: { x: number; y: number };
+        startDist: number;
+        startTransform: Transform;
+      }
+  >({ mode: "idle" });
 
   const [transform, setTransform] = useState<Transform>(IDENTITY);
   const transformRef = useRef<Transform>(IDENTITY);
@@ -98,33 +108,91 @@ export default function ZoomableImage({ src, alt }: ZoomableImageProps) {
     return () => stage.removeEventListener("wheel", onWheel);
   }, []);
 
+  const computePointerInfo = useCallback(() => {
+    const stage = stageRef.current;
+    if (!stage) return null;
+    const rect = stage.getBoundingClientRect();
+    const points = Array.from(pointersRef.current.values()).map((p) => ({
+      x: p.x - rect.left,
+      y: p.y - rect.top,
+    }));
+    if (points.length === 0) return null;
+    const cx = points.reduce((a, p) => a + p.x, 0) / points.length;
+    const cy = points.reduce((a, p) => a + p.y, 0) / points.length;
+    let dist = 0;
+    if (points.length >= 2) {
+      const dx = points[1].x - points[0].x;
+      const dy = points[1].y - points[0].y;
+      dist = Math.hypot(dx, dy);
+    }
+    return { cx, cy, dist };
+  }, []);
+
+  const recomputeGesture = useCallback(() => {
+    const info = computePointerInfo();
+    const cur = transformRef.current;
+    const size = pointersRef.current.size;
+    if (size === 1 && info) {
+      const pointerId = pointersRef.current.keys().next().value as number;
+      gestureRef.current = {
+        mode: "drag",
+        pointerId,
+        startX: info.cx,
+        startY: info.cy,
+        startTransform: cur,
+      };
+    } else if (size >= 2 && info) {
+      gestureRef.current = {
+        mode: "pinch",
+        startCenter: { x: info.cx, y: info.cy },
+        startDist: info.dist || 1,
+        startTransform: cur,
+      };
+    } else {
+      gestureRef.current = { mode: "idle" };
+    }
+  }, [computePointerInfo]);
+
   const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
-    if (e.button !== 0 && e.button !== 1) return;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    dragRef.current = {
-      pointerId: e.pointerId,
-      startX: e.clientX,
-      startY: e.clientY,
-      origX: transform.x,
-      origY: transform.y,
-    };
+    if (e.pointerType === "mouse" && e.button !== 0 && e.button !== 1) return;
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {}
+    pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    recomputeGesture();
   };
   const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current;
-    if (!drag || drag.pointerId !== e.pointerId) return;
-    setTransform((t) => ({
-      ...t,
-      x: drag.origX + (e.clientX - drag.startX),
-      y: drag.origY + (e.clientY - drag.startY),
-    }));
+    if (!pointersRef.current.has(e.pointerId)) return;
+    pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const info = computePointerInfo();
+    if (!info) return;
+    const g = gestureRef.current;
+    if (g.mode === "drag" && pointersRef.current.size === 1) {
+      setTransform({
+        scale: g.startTransform.scale,
+        x: g.startTransform.x + (info.cx - g.startX),
+        y: g.startTransform.y + (info.cy - g.startY),
+      });
+    } else if (g.mode === "pinch" && pointersRef.current.size >= 2) {
+      const rawScale = g.startTransform.scale * (info.dist / g.startDist);
+      const newScale = clampScale(rawScale);
+      const factor = newScale / g.startTransform.scale;
+      const px = g.startCenter.x - g.startTransform.x;
+      const py = g.startCenter.y - g.startTransform.y;
+      setTransform({
+        scale: newScale,
+        x: info.cx - factor * px,
+        y: info.cy - factor * py,
+      });
+    }
   };
   const endDrag = (e: ReactPointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current;
-    if (!drag || drag.pointerId !== e.pointerId) return;
+    if (!pointersRef.current.has(e.pointerId)) return;
     try {
       e.currentTarget.releasePointerCapture(e.pointerId);
     } catch {}
-    dragRef.current = null;
+    pointersRef.current.delete(e.pointerId);
+    recomputeGesture();
   };
 
   const stepZoom = useCallback((delta: number) => {
@@ -167,7 +235,7 @@ export default function ZoomableImage({ src, alt }: ZoomableImageProps) {
   }, [fit]);
 
   return (
-    <div className="zoom" data-cursor={dragRef.current ? "grabbing" : "grab"}>
+    <div className="zoom">
       <div
         ref={stageRef}
         className="zoom__stage"

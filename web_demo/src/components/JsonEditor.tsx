@@ -41,6 +41,10 @@ export default function JsonEditor({ value, onChange }: JsonEditorProps) {
           className="editor__textarea"
           value={value}
           spellCheck={false}
+          autoCapitalize="off"
+          autoCorrect="off"
+          autoComplete="off"
+          inputMode="text"
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Tab") {

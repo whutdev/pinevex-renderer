@@ -64,6 +64,7 @@ export default function TopBar({
           href="https://github.com/whutdev/pinevex-renderer"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="View Pinevex Renderer on GitHub"
           title="View Pinevex Renderer on GitHub"
         >
           <svg
