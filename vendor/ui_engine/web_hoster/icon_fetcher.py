@@ -25,9 +25,11 @@ THUMBNAIL_SIZE = "420x420"
 THUMBNAIL_BATCH = 50
 MAX_RETRIES = 5
 THUMBNAIL_DELAY = 0.15
+THUMBNAIL_READY_POLLS = 6
+THUMBNAIL_READY_DELAY = 0.45
 FETCH_WORKERS = 16
 _STATE_FILE = "_thumbnail_state.json"
-_PERMANENT_ERRORS = {"not_an_image", "no_thumbnail_url"}
+_PERMANENT_ERRORS = {"not_an_image"}
 _SAVE_EVERY = 100
 
 # Known placeholder image MD5 hashes (Roblox returns these instead of real thumbnails)
@@ -155,49 +157,65 @@ def resolve_thumbnail_urls(asset_ids, session, show_tqdm: bool = False):
     """Batch-resolve asset IDs to CDN image URLs via the Thumbnail API.
 
     Processes up to THUMBNAIL_BATCH IDs per API call with rate limiting.
-    Returns dict: asset_id -> image_url.
+    Returns dict: asset_id -> image_url for thumbnails that reached Completed.
     """
     url_map = {}
-    batches = [asset_ids[i:i + THUMBNAIL_BATCH] for i in range(0, len(asset_ids), THUMBNAIL_BATCH)]
-    batch_iter = batches
-    if show_tqdm and tqdm is not None:
-        batch_iter = tqdm(batches, desc="Resolving thumbnail URLs", unit="batch")
+    pending = [str(aid) for aid in asset_ids]
 
-    for batch in batch_iter:
-        ids_str = ",".join(batch)
-        params = {
-            "assetIds": ids_str,
-            "returnPolicy": "PlaceHolder",
-            "size": THUMBNAIL_SIZE,
-            "format": "Png",
-        }
+    for poll_idx in range(THUMBNAIL_READY_POLLS):
+        if not pending:
+            break
 
-        for attempt in range(MAX_RETRIES):
-            try:
-                resp = session.get(THUMBNAIL_API, params=params, timeout=15)
+        batches = [pending[i:i + THUMBNAIL_BATCH] for i in range(0, len(pending), THUMBNAIL_BATCH)]
+        batch_iter = batches
+        if show_tqdm and tqdm is not None:
+            batch_iter = tqdm(batches, desc="Resolving thumbnail URLs", unit="batch")
 
-                if resp.status_code == 429:
+        still_pending: set[str] = set()
+        for batch in batch_iter:
+            ids_str = ",".join(batch)
+            params = {
+                "assetIds": ids_str,
+                "returnPolicy": "PlaceHolder",
+                "size": THUMBNAIL_SIZE,
+                "format": "Png",
+            }
+
+            for attempt in range(MAX_RETRIES):
+                try:
+                    resp = session.get(THUMBNAIL_API, params=params, timeout=15)
+
+                    if resp.status_code == 429:
+                        delay = min(30, 2 ** attempt) + random.uniform(0, 1)
+                        time.sleep(delay)
+                        continue
+
+                    resp.raise_for_status()
+                    data = resp.json()
+
+                    seen = set()
+                    if "data" in data:
+                        for item in data["data"]:
+                            aid = str(item["targetId"])
+                            seen.add(aid)
+                            img_url = item.get("imageUrl")
+                            state = item.get("state", "")
+                            if img_url and state == "Completed":
+                                url_map[aid] = img_url
+                            elif state in ("Pending", "InReview", "Blocked"):
+                                still_pending.add(aid)
+                    still_pending.update(str(aid) for aid in batch if str(aid) not in seen and str(aid) not in url_map)
+                    break
+
+                except requests.exceptions.RequestException:
                     delay = min(30, 2 ** attempt) + random.uniform(0, 1)
                     time.sleep(delay)
-                    continue
 
-                resp.raise_for_status()
-                data = resp.json()
+            time.sleep(THUMBNAIL_DELAY)
 
-                if "data" in data:
-                    for item in data["data"]:
-                        aid = str(item["targetId"])
-                        img_url = item.get("imageUrl")
-                        state = item.get("state", "")
-                        if img_url and state in ("Completed", "Pending"):
-                            url_map[aid] = img_url
-                break
-
-            except requests.exceptions.RequestException:
-                delay = min(30, 2 ** attempt) + random.uniform(0, 1)
-                time.sleep(delay)
-
-        time.sleep(THUMBNAIL_DELAY)
+        pending = sorted(aid for aid in still_pending if aid not in url_map)
+        if pending and poll_idx < THUMBNAIL_READY_POLLS - 1:
+            time.sleep(THUMBNAIL_READY_DELAY * (poll_idx + 1))
 
     return url_map
 

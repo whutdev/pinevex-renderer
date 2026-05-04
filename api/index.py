@@ -57,6 +57,7 @@ sys.path.insert(0, str(UI_ENGINE_ROOT.parent))
 sys.path.insert(0, str(PRODUCT_OUTPUT_ROOT.parent))
 
 from ui_engine.renderer import render_json  # noqa: E402
+from ui_engine.assets import _load_image_cached  # noqa: E402
 from ui_engine.text_fonts import audit_required_font_variants, _try_load_exact_typeface  # noqa: E402
 from ui_engine.web_hoster.icon_fetcher import collect_asset_ids, fetch_icons  # noqa: E402
 from product_output.pinevex_postprocess import postprocess_pinevex_object  # noqa: E402
@@ -203,6 +204,7 @@ def _fetch_icons_sync(obj):
     ICON_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     for _ in fetch_icons(asset_ids, ICON_CACHE_DIR):
         pass
+    _load_image_cached.cache_clear()
 
 
 def _crop_preview_image(img: PILImage.Image, crop_rect: Any, padding: float = 0.12) -> PILImage.Image:
