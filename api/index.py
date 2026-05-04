@@ -59,7 +59,7 @@ sys.path.insert(0, str(PRODUCT_OUTPUT_ROOT.parent))
 from ui_engine.renderer import render_json  # noqa: E402
 from ui_engine.assets import _load_image_cached  # noqa: E402
 from ui_engine.text_fonts import audit_required_font_variants, _try_load_exact_typeface  # noqa: E402
-from ui_engine.web_hoster.icon_fetcher import collect_asset_ids, fetch_icons  # noqa: E402
+from ui_engine.asset_fetcher import collect_asset_ids, fetch_icons  # noqa: E402
 from product_output.pinevex_postprocess import postprocess_pinevex_object  # noqa: E402
 from product_output.pinevex_to_luau import pinevex_to_luau  # noqa: E402
 

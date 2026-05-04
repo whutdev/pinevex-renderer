@@ -4,7 +4,7 @@ Design a public web demo for Pinevex Renderer. Pinevex Renderer is a CPU-only re
 
 The demo should feel like an inspectable technical tool, not a marketing landing page. The first screen should let a serious engineer understand the system immediately: source UI structure on one side, rendered Roblox-style UI output on the other.
 
-Do not copy the old archived web_hoster UI. Redesign the interface from scratch.
+Do not copy the old archived web demo UI. Redesign the interface from scratch.
 
 ## Product goal
 

@@ -1,6 +1,6 @@
 # Web demo reference contract
 
-This is the behavior contract to preserve from the archived `web_hoster` without copying its UI.
+This is the behavior contract to preserve from the archived web demo without copying its UI.
 
 ## Inputs
 
