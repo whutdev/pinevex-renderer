@@ -40,6 +40,8 @@ The project originally existed to generate AI synthetic training data: structure
 
 It takes a nested UI tree and produces PNG previews that are close enough to be useful for reconstruction, validation, and export workflows. The renderer handles scale/offset layout, nested hierarchy, text fitting, strokes, gradients, rounded corners, tiled textures, icon references, and optional Luau generation.
 
+It also includes a Tk step-by-step paint debugger for inspecting each render operation with Left/Right controls, plus hit-testing helpers for finding which UI objects overlap a region.
+
 This repository is intentionally scoped to the renderer layer.
 
 ## Why this exists
