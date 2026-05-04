@@ -1149,13 +1149,18 @@ kbd {
     border-bottom: 1px solid var(--border);
   }
   /* Sections shouldn't fight each other for flex space on mobile —
-     the document scrolls, so each section just takes its content size. */
+     the document scrolls, so each section just takes its content size.
+     The editor itself MUST be height-bounded: its line-number gutter
+     renders one span per line, so without a cap a 100k-line JSON
+     would push the page tens of thousands of pixels tall. */
   .pane--input > .section--editor {
     flex: 0 0 auto;
-    min-height: 320px;
   }
   .editor {
-    min-height: 320px;
+    flex: 0 0 auto;
+    height: 50vh;
+    min-height: 280px;
+    max-height: 480px;
   }
   .pane--preview {
     min-height: 70vh;
