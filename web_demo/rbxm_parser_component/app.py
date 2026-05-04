@@ -39,26 +39,54 @@ class RenderableMatch(NamedTuple):
     node: dict[str, Any]
     visibility_root: dict[str, Any]
     screen_gui_disabled: bool
+    z_index_behavior: str | None
 
 
 def _prop_is_false(value: Any) -> bool:
     return value is False or (isinstance(value, str) and value.lower() == "false")
 
 
+def _normalize_z_index_behavior(value: Any) -> str | None:
+    if value is None:
+        return None
+    if isinstance(value, int):
+        if value == 0:
+            return "Global"
+        if value == 1:
+            return "Sibling"
+        return None
+    if isinstance(value, dict):
+        value = value.get("Value")
+    text = str(value).split(".")[-1]
+    if text in {"Global", "Sibling"}:
+        return text
+    return None
+
+
 def _find_renderable(
     nodes: list[dict[str, Any]],
     screen_gui_disabled: bool = False,
+    z_index_behavior: str | None = None,
 ) -> RenderableMatch | None:
     for node in nodes:
         cls = node.get("className", "")
         if cls in _SCREEN_GUI_CLASSES:
             props = node.get("properties") or {}
             gui_disabled = screen_gui_disabled or _prop_is_false(props.get("Enabled"))
+            gui_z_index_behavior = (
+                _normalize_z_index_behavior(props.get("ZIndexBehavior"))
+                or z_index_behavior
+            )
             children = node.get("children", [])
             if not children:
                 continue
             if len(children) == 1:
-                return RenderableMatch(children[0], children[0], gui_disabled)
+                return RenderableMatch(
+                    children[0],
+                    children[0],
+                    gui_disabled,
+                    gui_z_index_behavior,
+                )
             return RenderableMatch(
                 {
                     "className": "Frame",
@@ -74,10 +102,15 @@ def _find_renderable(
                 },
                 node,
                 gui_disabled,
+                gui_z_index_behavior,
             )
         if cls in _RENDERABLE_CLASSES:
-            return RenderableMatch(node, node, screen_gui_disabled)
-        found = _find_renderable(node.get("children", []), screen_gui_disabled)
+            return RenderableMatch(node, node, screen_gui_disabled, z_index_behavior)
+        found = _find_renderable(
+            node.get("children", []),
+            screen_gui_disabled,
+            z_index_behavior,
+        )
         if found:
             return found
     return None
@@ -142,6 +175,8 @@ async def parse_rbxm(file: UploadFile = File(...)):
         )
 
     obj = postprocess_pinevex_object(flatten_node(renderable.node))
+    if renderable.z_index_behavior:
+        obj["zIndexBehavior"] = renderable.z_index_behavior
     warnings: list[str] = []
     if renderable.screen_gui_disabled:
         warnings.append(
