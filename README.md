@@ -201,6 +201,41 @@ Returns a JSON response with the normalized object, optional base64 PNG preview,
 
 `pinevex_object` may be a JSON object or a string containing partial JSON. `viewport_size` accepts `[width, height]`, `{"width": 1204, "height": 168}`, `"1204x168"`, or `"1204,168"`. When omitted, the renderer uses `1920x1080`. Set `transparent_background` to `true` to return a PNG with a transparent canvas instead of a white canvas.
 
+## Step-by-step debugger
+
+Capture every visual paint operation for a Pinevex JSON file:
+
+```bash
+python -m vendor.ui_engine.debug_stepper examples/simple-ui.json \
+  --viewport-size 420x180 \
+  --output-dir pinevex_steps
+```
+
+The command writes numbered PNG frames, `steps.json`, and `index.html`. Open
+`pinevex_steps/index.html` in a browser and use Left/Right, Space, Home, or End
+to inspect the render one draw call at a time.
+
+Useful flags:
+
+- `--open` opens the generated browser viewer automatically.
+- `--tk` opens the optional Tkinter viewer.
+- `--debug` overlays renderer debug outlines.
+- `--transparent` uses a transparent canvas.
+- `--crop` crops frames when the input object sets `_crop: true`.
+
+The same feature is available from Python:
+
+```python
+from vendor.ui_engine.debug_stepper import capture_steps, save_steps
+
+steps, metadata = capture_steps(pinevex_object, width=420, height=180)
+save_steps(steps, output_dir="pinevex_steps", metadata=metadata)
+```
+
+For occlusion and selection debugging, `vendor.ui_engine.hit_test` exposes
+`get_objects_at_region`, `get_objects_at_instance`, `get_instance_rect`, and
+`get_instance_region`.
+
 ## JSON shape
 
 The renderer expects a nested UI tree with Roblox-like fields:
@@ -253,7 +288,7 @@ vendor/
   icon_library/manifest.json    Minimal public texture-key manifest
   native/                       Linux runtime libraries for hosted rendering
   product_output/               Pinevex postprocess and Luau export helpers
-  ui_engine/                    Layout, text, image, and Skia rendering code
+  ui_engine/                    Layout, text, image, hit-test, step debugger, and Skia rendering code
 requirements.txt
 vercel.json
 ```
